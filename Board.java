@@ -1,5 +1,7 @@
 /**
  * A board that contains 9x9 squares by default.
+ * This class is using singleton design pattern by having only one instance of
+ * Board class in the program.
  * 
  * @author  Muhammad Faishal Dzaky (1141326988)
  */

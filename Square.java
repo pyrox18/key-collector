@@ -36,13 +36,17 @@ public class Square{
     }
 
     /**
-     * To know wether the square is occupied by players or not. 
+     * To know if the square is spawning point for a player. There are
+     * 4 spawning points exist on the board and located at coordinate
+     * (0,0),(0,8),(8,0),(8,8).
      * 
      * @author Faishal
-     * @return a boolean - true if one player or more is occupying the square. 
+     * @return a boolean - true if the square coordinate is at one of the 
+     *         spawning point, else, false.
      */
     public boolean isPlayerSpawn() {
-        return players.size() > 0;
+        return ( (position.getX() == 0 || position.getX() == 8) && 
+                 (position.getY() == 0 || position.getY() == 8) );
     }
 
     /**
