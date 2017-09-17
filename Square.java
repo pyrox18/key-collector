@@ -16,7 +16,7 @@ public class Square{
     /**
      * The list of players that are occupying the square.
      */
-    private Player[] players;
+    private ArrayList<Player> players;
 
     /**
      * The special piece that is occupying the square. 
@@ -32,6 +32,7 @@ public class Square{
      * @param y the Y coordinate of the square on the game board.
      */
     public Square(int x, int y) {
+        players = new ArrayList<Player>();
         position = new Point(x, y);
     }
 
@@ -69,7 +70,7 @@ public class Square{
      */
     public boolean setSpecialPiece(SpecialPiece specialPiece) {
         this.specialPiece = specialPiece;
-        return true;
+        return this.specialPiece == specialPiece;
     }
 
     /**
@@ -81,4 +82,40 @@ public class Square{
     public Point getPosition() {
         return position;
     }
+
+    /**
+     * Add a player that is going to occupy the square.
+     * 
+     * @author Faishal
+     * @param player the player that is going to occupy the square.
+     * @return a boolean - true for adding the player into players array list and
+     *         it exist in the players array list.
+     */
+    public boolean placePlayer(Player player) {
+        players.add(player);
+        return players.contains(player);
+    }
+
+    /**
+     * Remove a player from the square.
+     * 
+     * @author Faishal
+     * @param player the player that is going to be removed from the square.
+     * @return a boolean - true if the player is exist and removed from player array list,
+     *         else, false. 
+     */
+    public boolean removePlayer(Player player) {
+        return remove(player);
+    }
+
+    /**
+     * Get all players that is occupying the square.
+     * 
+     * @author Faishal
+     * @return An array list of player.
+     */
+    public ArrayList<Player> getAllPlayers() {
+        return players;
+    }
+
 }
