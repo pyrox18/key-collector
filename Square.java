@@ -105,7 +105,7 @@ public class Square{
      *         else, false. 
      */
     public boolean removePlayer(Player player) {
-        return remove(player);
+        return players.remove(player);
     }
 
     /**
