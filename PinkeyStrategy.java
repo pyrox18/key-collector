@@ -6,15 +6,15 @@ import java.awt.Point;
  * @author  Ramanan R Muralitharan (1141128291)
  */
 
-public class PinkeyMoveStrategy extends MoveStrategy {
+public class PinkeyStrategy extends MoveStrategy {
 
     /**
-     * Default constructor for the PinkeyMoveStrategy class.
+     * Default constructor for the PinkeyStrategy class.
      * Does not do anything.
      * 
      * @author  Ramanan
      */
-    public PinkeyMoveStrategy() {}
+    public PinkeyStrategy() {}
 
     /**
      * Retrieves the squares that a player can move towards.

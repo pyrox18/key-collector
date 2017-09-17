@@ -6,15 +6,15 @@ import java.awt.Point;
  * @author  Ramanan R Muralitharan (1141128291)
  */
 
-public class MoveMonkeyStrategy extends MoveStrategy {
+public class MonkeyStrategy extends MoveStrategy {
 
     /**
-     * Default constructor for the MoveMonkeyStrategy class.
+     * Default constructor for the MonkeyStrategy class.
      * Does not do anything.
      * 
      * @author  Ramanan
      */
-    public MoveMonkeyStrategy() {}
+    public MonkeyMoveStrategy() {}
 
     /**
      * Retrieves the squares that a player can move towards.

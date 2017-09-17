@@ -1,5 +1,5 @@
 /**
- * An interface for all the movement strategies of each key
+ * An abstract class for the movement strategies of each key.
  * 
  * @author Ramanan R Muralitharan (1141128291)
  */
