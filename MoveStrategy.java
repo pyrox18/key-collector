@@ -14,9 +14,9 @@ public abstract class MoveStrategy {
      * @return  a boolean
      */
     public bool move(Player player, Square square) {
-        for (Square sq : (getValidMoveLocations(player))) {
-            if (square == sq) {
-                sq.placePlayer(player);
+        for (Point p : (getValidMoveLocations(player))) {
+            if (square.getLocation() == p) {
+                square.placePlayer(player);
                 return true;
             }
         }
@@ -25,11 +25,11 @@ public abstract class MoveStrategy {
 
 
     /**
-     * Retrieves the squares that a player can move towards
+     * Retrieves the squares that a player can move towards.
      * 
      * @author  Ramanan
      * @param   player The player that is interacting with the key.
-     * @return  an array of Squares
+     * @return  an ArrayList of Points.
      */
-    public abstract ArrayList<Square> getValidMoveLocations(Player player);
+    public abstract ArrayList<Points> getValidMoveLocations(Player player);
 }

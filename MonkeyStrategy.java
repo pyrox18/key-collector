@@ -1,5 +1,7 @@
 import java.awt.Point;
 
+import sun.security.jca.GetInstance;
+
 /**
  * A class used to set the behaviours and specialize the movement strategy of "Monkey" key.
  * 
@@ -18,17 +20,17 @@ public class MonkeyStrategy extends MoveStrategy {
 
     /**
      * Retrieves the squares that a player can move towards.
-     * Monkey movement strategy permits the player to move three squares in any direction.
+     * Pinkey movement permits the player to move three squares any direction. 
      * 
      * @author  Ramanan
      * @param   player The player that is interacting with the key.
-     * @return  a boolean  
+     * @return  an ArrayList of Points.
      */
     @Override
-    public ArrayList<Square> getValidMoveLocations(Player player) {
+    public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Square> validSquares = new ArrayList(24);
-        Point p = player.getSquare().getLocation();
+        ArrayList<Point> validPoints = new ArrayList(24);
+        Point p = player.getSquare().getPosition();
         
         int x = 3;
         int y = 3;
@@ -36,27 +38,23 @@ public class MonkeyStrategy extends MoveStrategy {
         for (int i = x; i >= 0; i--) {
             if (i == 0) {
                 for (int j = x; j > 0; j--) {
-                    try {
-                        validSquares.add(instance.squares[p.getX()][p.getY() + j]);
-                    } catch (Exception e) {}
-                    try {
-                        validSquares.add(instance.squares[p.getX()][p.getY() - j]);
-                    } catch (Exception e) {}
+                    if (p.getX() + i > -1 && p.getX() + i < 9 && p.getY() + j > -1 && p.getY() + j < 9)
+                        validPoints.add(new Point(p.getX() + i, p.getY() + j));
+                    else if (p.getX() - i > -1 && p.getX() - i < 9 && p.getY() - j > -1 && p.getY() - j < 9)
+                            validPoints.add(new Point(p.getX() - i, p.getY() - j));
                 }
             }
             else {
                 for (int j = y; j >= -y; j = j - y){
-                    try {
-                        validSquares.add(instance.squares[p.getX() + i][p.getY() + j]);
-                    } catch (Exception e) {}
-                    try {
-                        validSquares.add(instance.squares[p.getX() - i][p.getY() - j]);
-                    } catch (Exception e) {}
+                    if (p.getX() + i > -1 && p.getX() + i < 9 && p.getY() + j > -1 && p.getY() + j < 9)
+                        validPoints.add(new Point(p.getX() + i, p.getY() + j));
+                    else if (p.getX() - i > -1 && p.getX() - i < 9 && p.getY() - j > -1 && p.getY() - j < 9)
+                            validPoints.add(new Point(p.getX() - i, p.getY() - j));
                 }
             }  
             y--;
         }
 
-        return validSquares;
+        return validPoints;
     }
 }

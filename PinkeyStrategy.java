@@ -18,25 +18,24 @@ public class PinkeyStrategy extends MoveStrategy {
 
     /**
      * Retrieves the squares that a player can move towards.
-     * Pinkey movement strategy permits the player to move one square in any direction.
+     * Pinkey movement permits the player to move one square any direction. 
      * 
      * @author  Ramanan
      * @param   player The player that is interacting with the key.
-     * @return  a boolean  
+     * @return  an ArrayList of Points.
      */
     @Override
-    public ArrayList<Square> getValidMoveLocations(Player player) {
+    public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Square> validSquares = new ArrayList(9);
-        Point p = player.getSquare().getLocation();
+        ArrayList<Point> validPoints = new ArrayList(9);
+        Point p = player.getSquare().getPosition();
 
         for (int i = -1; i <= 1; i++){
             for (int j = -1; i <= 1; j++){
-                try {
-                    validSquares.add(instance.squares[p.getX() + i][p.getY() + j]);
-                } catch (Exception e) {}
+                if (p.getX() + i > -1 && p.getX() + i < 9 && p.getY() + j > -1 && p.getY() + j < 9) 
+                    validPoints.add(new Point(p.getX() + i, p.getY() + j));
             }
         }
-        return validSquares;
+        return validPoints;
     }
 }
