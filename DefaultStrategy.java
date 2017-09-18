@@ -1,24 +1,24 @@
 import java.awt.Point;
 
 /**
- * A class used to set the behaviours and specialize the movement strategy of "Monkey" key.
+ * A class used to set the behaviours and specialize the default movement strategy.
  * 
  * @author  Ramanan R Muralitharan (1141128291)
  */
 
-public class MonkeyStrategy extends MoveStrategy {
+public class DefaultStrategy extends MoveStrategy {
 
     /**
-     * Default constructor for the MonkeyStrategy class.
+     * Default constructor for the DefaultStrategy class.
      * Does not do anything.
      * 
      * @author  Ramanan
      */
-    public MonkeyStrategy() {}
+    public DefaultStrategy() {}
 
     /**
      * Retrieves the squares that a player can move towards.
-     * Monkey movement permits the player to move up to three squares in any direction. 
+     * Default movement permits the player to move up to two squares in any direction. 
      * 
      * @author  Ramanan
      * @param   player The player that is interacting with the key.
@@ -27,11 +27,11 @@ public class MonkeyStrategy extends MoveStrategy {
     @Override
     public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Point> validPoints = new ArrayList(24);
+        ArrayList<Point> validPoints = new ArrayList(16);
         Point p = player.getSquare().getPosition();
         
-        int x = 3;
-        int y = 3;
+        int x = 2;
+        int y = 2;
 
         for (int i = x; i >= 0; i--) {
             if (i == 0) {

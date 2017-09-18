@@ -15,7 +15,7 @@ public abstract class MoveStrategy {
      */
     public bool move(Player player, Square square) {
         for (Point p : (getValidMoveLocations(player))) {
-            if (square.getLocation() == p) {
+            if (square.getPosition() == p) {
                 square.placePlayer(player);
                 return true;
             }
@@ -31,5 +31,5 @@ public abstract class MoveStrategy {
      * @param   player The player that is interacting with the key.
      * @return  an ArrayList of Points.
      */
-    public abstract ArrayList<Points> getValidMoveLocations(Player player);
+    public abstract ArrayList<Point> getValidMoveLocations(Player player);
 }
