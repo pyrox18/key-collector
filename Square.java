@@ -6,6 +6,9 @@
  */
 
 import java.awt.Point;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 
 public class Square{
     /**
@@ -118,4 +121,18 @@ public class Square{
         return players;
     }
 
+    /**
+     * Gets the icon for the piece on top of the square.
+     * If there are players on the square, the method retrieves the icon of the fist player to land in the square.
+     * If there are no players, the method retrieves the icon of the special piece on the square.
+     * 
+     * @author  Ramanan
+     * @return  an ImageIcon
+     */
+    public ImageIcon getTopMostImageIcon() {
+        if (!players.isEmpty())
+            return players.get(0).getIcon();
+        else
+            return specialPiece.getIcon();
+    }
 }

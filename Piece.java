@@ -1,3 +1,5 @@
+import javax.swing.ImageIcon;
+
 /**
  * An abstract class that serves as the basis for pieces that are present on the game board
  * (players, keys and chest).
@@ -10,6 +12,11 @@ public abstract class Piece {
      * The square that the piece is currently on.
      */
     private Square square;
+
+    /**
+     * The icon for the piece.
+     */
+    private ImageIcon icon;
 
     /**
      * Constructor for the Piece class.
@@ -40,5 +47,15 @@ public abstract class Piece {
      */
     public void setSquare(Square square) {
         this.square = square;
+    }
+
+    /**
+     * Gets the icon for the piece.
+     * 
+     * @author  Ramanan
+     * @return  the icon
+     */
+    public ImageIcon getIcon () {
+        return icon;
     }
 }
