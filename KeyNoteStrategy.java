@@ -1,4 +1,5 @@
 import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  * A class used to set the behaviours and specialize the movement strategy of "Key note" key.
@@ -36,10 +37,10 @@ public class KeyNoteStrategy extends MoveStrategy {
         for (int i = x; i >= 0; i = i - x) {
             for (int j = y; j >= -y; j = j - y){
                 if (i != 0 && j != 0) {
-                    if (p.getX() + i > -1 && p.getX() + i < 9 && p.getY() + j > -1 && p.getY() + j < 9)
-                        validPoints.add(new Point(p.getX() + i, p.getY() + j));
-                    else if (p.getX() - i > -1 && p.getX() - i < 9 && p.getY() - j > -1 && p.getY() - j < 9)
-                            validPoints.add(new Point(p.getX() - i, p.getY() - j));
+                    if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9)
+                        validPoints.add(new Point(p.x + i, p.y + j));
+                    else if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
+                            validPoints.add(new Point(p.x - i, p.y - j));
 
                 }
             }

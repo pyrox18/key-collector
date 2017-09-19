@@ -1,11 +1,12 @@
+import java.awt.Point;
+import java.util.ArrayList;
+
 /**
  * A square that serves as a platform of where several types of piece is located
  * (players, keys and chest).
  * 
  * @author  Muhammad Faishal Dzaky (1141326988) 
  */
-
-import java.awt.Point;
 
 public class Square{
     /**
