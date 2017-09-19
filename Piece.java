@@ -1,10 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
  * An abstract class that serves as the basis for pieces that are present on the game board
  * (players, keys and chest).
  * 
- * @author      Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 
 public abstract class Piece {
@@ -21,12 +22,15 @@ public abstract class Piece {
     /**
      * Constructor for the Piece class.
      * Sets the square that the piece is initially on.
+     * Sets the icon for the piece.
      * 
-     * @author Haryz
-     * @param  square The square that the piece is initially on.
+     * @author  Haryz
+     * @param   square The square that the piece is initially on.
+     * @param   iconPath The path to the icon for the piece.
      */
-    public Piece(Square square) {
+    public Piece(Square square, String iconPath){
         this.square = square;
+        icon = ImageIO.read(getClass().getResource(iconPath));
     }
 
     /**

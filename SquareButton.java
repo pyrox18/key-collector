@@ -20,7 +20,9 @@ public class SquareButton extends JButton {
      * @param   square The square that the button needs to be assigned to.
      */
     public SquareButton (Square square) {
+        super();
         this.square = square;
+        this.setIcon(square.getTopMostImageIcon());
     }
 }
 

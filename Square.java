@@ -132,7 +132,12 @@ public class Square{
     public ImageIcon getTopMostImageIcon() {
         if (!players.isEmpty())
             return players.get(0).getIcon();
-        else
-            return specialPiece.getIcon();
+        else {
+            try {
+                return specialPiece.getIcon();          
+            } catch (Exception e) {
+                return null;
+            }
+        }
     }
 }
