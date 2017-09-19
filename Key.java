@@ -43,6 +43,6 @@ public class Key extends SpecialPiece {
      */
     @Override
     public boolean interact(Player player) {
-        player.pickupKey(this);
+        return player.pickupKey(this);
     }
 }

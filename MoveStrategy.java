@@ -1,3 +1,6 @@
+import java.awt.Point;
+import java.util.ArrayList;
+
 /**
  * An abstract class for the movement strategies of each key.
  * 
@@ -13,7 +16,7 @@ public abstract class MoveStrategy {
      * @param   square The square that the player is on.
      * @return  a boolean
      */
-    public bool move(Player player, Square square) {
+    public boolean move(Player player, Square square) {
         for (Point p : (getValidMoveLocations(player))) {
             if (square.getPosition() == p) {
                 square.placePlayer(player);

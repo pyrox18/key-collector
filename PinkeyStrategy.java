@@ -1,4 +1,5 @@
 import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  * A class used to set the behaviours and specialize the movement strategy of "Pinkey" key.
@@ -32,8 +33,8 @@ public class PinkeyStrategy extends MoveStrategy {
 
         for (int i = -1; i <= 1; i++){
             for (int j = -1; i <= 1; j++){
-                if (p.getX() + i > -1 && p.getX() + i < 9 && p.getY() + j > -1 && p.getY() + j < 9) 
-                    validPoints.add(new Point(p.getX() + i, p.getY() + j));
+                if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9) 
+                    validPoints.add(new Point(p.x + i, p.y + j));
             }
         }
         return validPoints;
