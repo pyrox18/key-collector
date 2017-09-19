@@ -7,7 +7,7 @@
  */
 
 public class Board {
-    private static Board instance;
+    private static Board instance = new Board();
 
     /**
      * Array of Square indicating how many squares are on the board.
@@ -35,7 +35,7 @@ public class Board {
      * @author Faishal
      * @return the instance
      */
-    public Board getInstance() {
+    public static Board getInstance() {
         return instance;
     }
 
