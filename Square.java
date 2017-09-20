@@ -1,11 +1,13 @@
 import java.awt.Point;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  * A square that serves as a platform of where several types of piece is located
  * (players, keys and chest).
  * 
  * @author  Muhammad Faishal Dzaky (1141326988) 
+ * @author  Ramanan R Muralitharan (1141128291)
  */
 
 public class Square{
@@ -119,4 +121,23 @@ public class Square{
         return players;
     }
 
+    /**
+     * Gets the icon for the piece on top of the square.
+     * If there are players on the square, the method retrieves the icon of the fist player to land in the square.
+     * If there are no players, the method retrieves the icon of the special piece on the square.
+     * 
+     * @author  Ramanan
+     * @return  an ImageIcon
+     */
+    public ImageIcon getTopMostImageIcon() {
+        if (!players.isEmpty())
+            return players.get(0).getIcon();
+        else {
+            try {
+                return specialPiece.getIcon();          
+            } catch (Exception e) {
+                return null;
+            }
+        }
+    }
 }
