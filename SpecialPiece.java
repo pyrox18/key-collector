@@ -8,13 +8,14 @@
  public abstract class SpecialPiece extends Piece {
     /**
      * Constructor for the SpecialPiece class.
-     * Sets the square that the special piece is initially on.
+     * Sets the square that the special piece is initially on, and provides the piece's icon path.
      * 
      * @author Haryz
      * @param  square The square that the special piece is initially on.
+     * @param  iconPath The path to the icon for the piece.
      */
-    public SpecialPiece(Square square) {
-        super(square);
+    public SpecialPiece(Square square, String iconPath) {
+        super(square, iconPath);
     }
 
     /**

@@ -23,14 +23,15 @@ public class Player extends Piece {
     /**
      * Constructor for the Player class.
      * Initialises the list of keys and sets the player to move using the default strategy.
-     * Also sets the player's initial square and the player's name.
+     * Also sets the player's initial square, the piece's icon path and the player's name.
      * 
      * @author Haryz
      * @param  square The square that the player is initially on.
+     * @param  iconPath The path to the icon for the piece.
      * @param  playerName The name of the player.
      */
-    public Player(Square square, String playerName) {
-        super(square);
+    public Player(Square square, String iconPath, String playerName) {
+        super(square, iconPath);
         this.playerName = playerName;
         keys = new ArrayList<Key>();
         movementStrategy = new DefaultStrategy();
