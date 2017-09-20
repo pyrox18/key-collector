@@ -17,16 +17,24 @@ public class SquareClickListener implements ActionListener{
     
     /**
      * Moves the player to the clicked square.
-     * If succesful, the player reference is removed from the square he was in.
+     * If successful, the player reference is removed from the square he was in, and the player turn advances.
      * 
      * @author  Ramanan
      * @param   evt The mouse click on the square.
+     * @param   square The square to move to.
      */
-    public void actionPerformed(ActionEvent evt) {
-        Square playerSquare = Board.getInstance().getCurrentPlayer().getSquare();
-        if (Board.getInstance().getCurrentPlayer().move(square)) {
-            square.placePlayer(Board.getInstance().getCurrentPlayer());
-            playerSquare.removePlayer(Board.getInstance().getCurrentPlayer());
+    public void actionPerformed(ActionEvent evt, Square square) {
+        Board board = Board.getInstance();
+        Player player = board.getCurrentPlayer();
+        Square oldSquare = player.getSquare();
+        if (player.move(square)) {
+            square.placePlayer(player);
+            oldSquare.removePlayer(player);
+            SpecialPiece specialPiece = square.getSpecialPiece();
+            if (specialPiece != null) {
+                specialPiece.interact(player);
+            }
+            board.advanceTurn();
         }
     } 
 }
