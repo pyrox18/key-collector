@@ -28,7 +28,7 @@ public class PinkeyStrategy extends MoveStrategy {
     @Override
     public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Point> validPoints = new ArrayList(9);
+        ArrayList<Point> validPoints = new ArrayList<Point>(9);
         Point p = player.getSquare().getPosition();
 
         for (int i = -1; i <= 1; i++){

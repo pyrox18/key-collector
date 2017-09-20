@@ -28,7 +28,7 @@ public class KeyNoteStrategy extends MoveStrategy {
     @Override
     public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Point> validPoints = new ArrayList(8);
+        ArrayList<Point> validPoints = new ArrayList<Point>(8);
         Point p = player.getSquare().getPosition();
 
         int x = 2;

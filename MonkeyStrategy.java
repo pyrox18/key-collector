@@ -28,7 +28,7 @@ public class MonkeyStrategy extends MoveStrategy {
     @Override
     public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Point> validPoints = new ArrayList(24);
+        ArrayList<Point> validPoints = new ArrayList<Point>(24);
         Point p = player.getSquare().getPosition();
         
         int x = 3;

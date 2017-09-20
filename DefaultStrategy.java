@@ -28,7 +28,7 @@ public class DefaultStrategy extends MoveStrategy {
     @Override
     public ArrayList<Point> getValidMoveLocations(Player player) {
 
-        ArrayList<Point> validPoints = new ArrayList(16);
+        ArrayList<Point> validPoints = new ArrayList<Point>(16);
         Point p = player.getSquare().getPosition();
         
         int x = 2;
