@@ -30,7 +30,7 @@ public abstract class Piece {
      */
     public Piece(Square square, String iconPath){
         this.square = square;
-        icon = ImageIO.read(getClass().getResource(iconPath));
+        icon = new ImageIcon(getClass().getResource(iconPath));
     }
 
     /**

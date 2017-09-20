@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * 
  * @author  Muhammad Faishal Dzaky (1141326988)
  * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Ramanan R Muralitharan (1141128291)
  */
 
 public class Board {
@@ -74,6 +75,16 @@ public class Board {
     public boolean advanceTurn() {
         playerTurn = (playerTurn + 1) % players.size();
         return true;
+    }
+
+    /**
+     * Gets the player of the current turn.
+     * 
+     * @author Ramanan
+     * @return a player - the player of the current turn 
+     */
+    public Player getCurrentPlayer() {
+        return players.get(playerTurn);
     }
 
     /**

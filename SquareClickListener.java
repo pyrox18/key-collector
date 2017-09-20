@@ -1,3 +1,4 @@
+import java.awt.event.*;  
 /**
  * A class for listening mouse clicks on the squares.
  * 
@@ -5,6 +6,7 @@
  */
 public class SquareClickListener implements ActionListener{
 
+    private Square square;
     /**
      * Default constructor for the SquareClickListener class.
      * Does not do anything.
@@ -15,13 +17,16 @@ public class SquareClickListener implements ActionListener{
     
     /**
      * Moves the player to the clicked square.
+     * If succesful, the player reference is removed from the square he was in.
      * 
      * @author  Ramanan
      * @param   evt The mouse click on the square.
-     * @param   player The player that is going to move.
-     * @param   square The square the player wants to move to.
      */
-    public void actionPerformed(ActionEvent evt, Player player, Square square) {
-        player.move(square);
+    public void actionPerformed(ActionEvent evt) {
+        Square playerSquare = Board.getInstance().getCurrentPlayer().getSquare();
+        if (Board.getInstance().getCurrentPlayer().move(square)) {
+            square.placePlayer(Board.getInstance().getCurrentPlayer());
+            playerSquare.removePlayer(Board.getInstance().getCurrentPlayer());
+        }
     } 
 }
