@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 public class Player extends Piece {
     /**
+     * The name of the player.
+     */
+    private String playerName;
+    /**
      * A list of keys that the player currently possesses.
      */
     private ArrayList<Key> keys;
@@ -19,15 +23,27 @@ public class Player extends Piece {
     /**
      * Constructor for the Player class.
      * Initialises the list of keys and sets the player to move using the default strategy.
-     * Also sets the player's initial square.
+     * Also sets the player's initial square and the player's name.
      * 
      * @author Haryz
      * @param  square The square that the player is initially on.
+     * @param  playerName The name of the player.
      */
-    public Player(Square square) {
+    public Player(Square square, String playerName) {
         super(square);
+        this.playerName = playerName;
         keys = new ArrayList<Key>();
         movementStrategy = new DefaultStrategy();
+    }
+
+    /**
+     * Gets the player's name
+     * 
+     * @author Haryz
+     * @return The playerName attribute.
+     */
+    public String getPlayerName() {
+        return playerName;
     }
     
     /**
