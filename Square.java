@@ -1,5 +1,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  * A square that serves as a platform of where several types of piece is located
@@ -8,11 +9,6 @@ import java.util.ArrayList;
  * @author  Muhammad Faishal Dzaky (1141326988) 
  * @author  Ramanan R Muralitharan (1141128291)
  */
-
-import java.awt.Point;
-import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 public class Square{
     /**
