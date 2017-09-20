@@ -3,7 +3,8 @@ import javax.swing.*;
 /**
  * A class for creating buttons used as squares in the board.
  * 
- * @author  Ramanan 
+ * @author  Ramanan R Muralitharan (1141128291)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 public class SquareButton extends JButton {
 
@@ -23,6 +24,16 @@ public class SquareButton extends JButton {
         super();
         this.square = square;
         this.setIcon(square.getTopMostImageIcon());
+    }
+
+    /**
+     * Gets the square attached to the button.
+     * 
+     * @author  Haryz
+     * @return  The square attribute.
+     */
+    public Square getSquare() {
+        return square;
     }
 }
 

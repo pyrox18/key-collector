@@ -17,8 +17,9 @@ public abstract class MoveStrategy {
      * @return  a boolean
      */
     public boolean move(Player player, Square square) {
-        for (Point p : (getValidMoveLocations(player))) {
-            if (square.getPosition() == p) {
+        ArrayList<Point> validMoveLocations = getValidMoveLocations(player);
+        for (Point p : validMoveLocations) {
+            if (square.getPosition().equals(p)) {
                 square.placePlayer(player);
                 return true;
             }
