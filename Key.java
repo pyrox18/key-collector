@@ -13,14 +13,15 @@ public class Key extends SpecialPiece {
     /**
      * Constructor for the Key class.
      * Sets the movement strategy related to the key.
-     * Also sets the key's initial square.
+     * Also sets the key's initial square and icon path.
      * 
      * @author Haryz
      * @param  square The square that the key is initially on.
+     * @param  iconPath The path to the icon for the piece.
      * @param  strategy The movement strategy related to the key.
      */
-    public Key(Square square, MoveStrategy strategy) {
-        super(square);
+    public Key(Square square, String iconPath, MoveStrategy strategy) {
+        super(square, iconPath);
         this.strategy = strategy;
     }
 

@@ -13,14 +13,15 @@ public class Chest extends SpecialPiece {
     /**
      * Constructor for the Chest class.
      * Sets the number of keys required to unlock the chest.
-     * Also sets the square that the chest is initially on.
+     * Also sets the square that the chest is initially on, and the chest's icon path.
      * 
      * @author Haryz
      * @param  square The square that the chest is initially on.
+     * @param  iconPath The path to the icon for the piece.
      * @param  keysRequired The number of keys required to unlock the chest.
      */
-    public Chest(Square square, int keysRequired) {
-        super(square);
+    public Chest(Square square, String iconPath, int keysRequired) {
+        super(square, iconPath);
         this.keysRequired = keysRequired;
     }
 
