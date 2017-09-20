@@ -23,10 +23,11 @@ public class SquareClickListener implements ActionListener{
      * @param   evt The mouse click on the square.
      */
     public void actionPerformed(ActionEvent evt) {
-        Square playerSquare = Board.getInstance().getCurrentPlayer().getSquare();
-        if (Board.getInstance().getCurrentPlayer().move(square)) {
-            square.placePlayer(Board.getInstance().getCurrentPlayer());
-            playerSquare.removePlayer(Board.getInstance().getCurrentPlayer());
+        Board board = Board.getInstance();
+        Square playerSquare = board.getCurrentPlayer().getSquare();
+        if (board.getCurrentPlayer().move(square)) {
+            square.placePlayer(board.getCurrentPlayer());
+            playerSquare.removePlayer(board.getCurrentPlayer());
         }
     } 
 }
