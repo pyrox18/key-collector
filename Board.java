@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A board that contains 9x9 squares by default.
@@ -144,18 +146,24 @@ public class Board {
         Square chestSquare = getSquare(4, 4);
         chestSquare.setSpecialPiece(new Chest(chestSquare, chestIconPath, 5));
 
-        // Key setting is a placeholder for now - should be randomised later
-        Square monkeySquare = getSquare(1, 2);
-        monkeySquare.setSpecialPiece(new Key(monkeySquare, keyIconPaths[0], new MonkeyStrategy()));
-        Square donkeySquare = getSquare(1, 5);
-        donkeySquare.setSpecialPiece(new Key(donkeySquare, keyIconPaths[1], new DonkeyStrategy()));
-        Square keyDiskSquare = getSquare(3, 3);
-        keyDiskSquare.setSpecialPiece(new Key(keyDiskSquare, keyIconPaths[2], new KeyDiskStrategy()));
-        Square pinkeySquare = getSquare(5, 4);
-        pinkeySquare.setSpecialPiece(new Key(pinkeySquare, keyIconPaths[3], new PinkeyStrategy()));
-        Square keyNoteSquare = getSquare(6, 5);
-        keyNoteSquare.setSpecialPiece(new Key(keyNoteSquare, keyIconPaths[4], new KeyNoteStrategy()));
+        ArrayList<MoveStrategy> strategies = new ArrayList<MoveStrategy>(Arrays.asList(
+            new MonkeyStrategy(),
+            new DonkeyStrategy(),
+            new KeyDiskStrategy(),
+            new PinkeyStrategy(),
+            new KeyNoteStrategy()
+        ));
 
+        for (int i = 0; i < strategies.size(); i++) {
+            Square square;
+            do {
+                int randomX = ThreadLocalRandom.current().nextInt(0, 9);
+                int randomY = ThreadLocalRandom.current().nextInt(0, 9);
+                square = getSquare(randomX, randomY);
+            } while (square.isPlayerSpawn() || square.getSpecialPiece() != null);
+            square.setSpecialPiece(new Key(square, keyIconPaths[i], strategies.get(i)));
+        }
+        
         return true;
     }
 
