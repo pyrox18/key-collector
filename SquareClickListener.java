@@ -38,10 +38,7 @@ public class SquareClickListener implements ActionListener{
         Player player = board.getCurrentPlayer();
         Square newSquare = button.getSquare();
         Square oldSquare = player.getSquare();
-        System.out.println("clicked " + newSquare.getPosition());
-        System.out.println(player.getPlayerName());
         if (player.move(newSquare)) {
-            System.out.println("player moved successfully");
             oldSquare.removePlayer(player);
             SpecialPiece specialPiece = newSquare.getSpecialPiece();
             if (specialPiece != null) {

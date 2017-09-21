@@ -13,7 +13,7 @@ public abstract class MoveStrategy {
      * 
      * @author  Ramanan
      * @param   player The player that is interacting with the key.
-     * @param   square The square that the player is on.
+     * @param   square The square that the player is attempting to move to.
      * @return  a boolean
      */
     public boolean move(Player player, Square square) {
@@ -21,6 +21,7 @@ public abstract class MoveStrategy {
         for (Point p : validMoveLocations) {
             if (square.getPosition().equals(p)) {
                 square.placePlayer(player);
+                player.setSquare(square);
                 return true;
             }
         }
