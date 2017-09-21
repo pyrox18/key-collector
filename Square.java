@@ -131,7 +131,7 @@ public class Square{
      */
     public ImageIcon getTopMostImageIcon() {
         if (!players.isEmpty())
-            return players.get(0).getIcon();
+            return players.get(players.size() - 1).getIcon();
         else {
             try {
                 return specialPiece.getIcon();          
