@@ -2,6 +2,12 @@
 
 A board game designed for an Object-Oriented Analysis &amp; Design project.
 
+## Installation and Usage
+
+1. Clone the repository.
+2. Run `javac *.java` to compile all of the source files.
+3. Run `java KeyCollector` to run the program.
+
 ## Contributing
 
 First, clone the repository.

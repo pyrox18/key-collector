@@ -101,28 +101,50 @@ public class Board {
             "Can Ser",
             "Doz Ciztem"
         };
+        final String[] playerIconPaths = {
+            "/icons/p1.gif",
+            "/icons/p2.gif",
+            "/icons/p3.gif",
+            "/icons/p4.gif"
+        };
+        final String[] keyIconPaths = {
+            "/icons/monkey.gif",
+            "/icons/donkey.gif",
+            "/icons/keydisk.gif",
+            "/icons/pinkey.gif",
+            "/icons/keynote.gif"
+        };
+        final String chestIconPath = "/icons/chest.gif";
 
         clearBoard();
 
-        players.add(new Player(getSquare(0, 0), playerNames[0]));
-        players.add(new Player(getSquare(0, 8), playerNames[1]));
-        players.add(new Player(getSquare(8, 0), playerNames[2]));
-        players.add(new Player(getSquare(8, 8), playerNames[3]));
+        Player p1 = new Player(getSquare(0, 0), playerIconPaths[0], playerNames[0]);
+        players.add(p1);
+        getSquare(0, 0).placePlayer(p1);
+        Player p2 = new Player(getSquare(0, 8), playerIconPaths[1], playerNames[1]);
+        players.add(p2);
+        getSquare(0, 8).placePlayer(p2);
+        Player p3 = new Player(getSquare(8, 0), playerIconPaths[2], playerNames[2]);
+        players.add(p3);
+        getSquare(8, 0).placePlayer(p3);
+        Player p4 = new Player(getSquare(8, 8), playerIconPaths[3], playerNames[3]);
+        players.add(p4);
+        getSquare(8, 8).placePlayer(p4);
 
-        Square chestSquare = getSquare(5, 5);
-        chestSquare.setSpecialPiece(new Chest(chestSquare, 5));
+        Square chestSquare = getSquare(4, 4);
+        chestSquare.setSpecialPiece(new Chest(chestSquare, chestIconPath, 5));
 
         // Key setting is a placeholder for now - should be randomised later
-        Square monkeySquare = getSquare(2, 3);
-        monkeySquare.setSpecialPiece(new Key(monkeySquare, new MonkeyStrategy()));
-        Square donkeySquare = getSquare(2, 6);
-        donkeySquare.setSpecialPiece(new Key(donkeySquare, new DonkeyStrategy()));
-        Square keyDiskSquare = getSquare(4, 4);
-        keyDiskSquare.setSpecialPiece(new Key(keyDiskSquare, new KeyDiskStrategy()));
-        Square pinkeySquare = getSquare(6, 5);
-        pinkeySquare.setSpecialPiece(new Key(pinkeySquare, new PinkeyStrategy()));
-        Square keyNoteSquare = getSquare(7, 6);
-        keyNoteSquare.setSpecialPiece(new Key(keyNoteSquare, new KeyNoteStrategy()));
+        Square monkeySquare = getSquare(1, 2);
+        monkeySquare.setSpecialPiece(new Key(monkeySquare, keyIconPaths[0], new MonkeyStrategy()));
+        Square donkeySquare = getSquare(1, 5);
+        donkeySquare.setSpecialPiece(new Key(donkeySquare, keyIconPaths[1], new DonkeyStrategy()));
+        Square keyDiskSquare = getSquare(3, 3);
+        keyDiskSquare.setSpecialPiece(new Key(keyDiskSquare, keyIconPaths[2], new KeyDiskStrategy()));
+        Square pinkeySquare = getSquare(5, 4);
+        pinkeySquare.setSpecialPiece(new Key(pinkeySquare, keyIconPaths[3], new PinkeyStrategy()));
+        Square keyNoteSquare = getSquare(6, 5);
+        keyNoteSquare.setSpecialPiece(new Key(keyNoteSquare, keyIconPaths[4], new KeyNoteStrategy()));
 
         return true;
     }
