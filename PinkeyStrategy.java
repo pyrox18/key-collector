@@ -30,9 +30,10 @@ public class PinkeyStrategy extends MoveStrategy {
 
         ArrayList<Point> validPoints = new ArrayList<Point>(9);
         Point p = player.getSquare().getPosition();
+        
 
         for (int i = -1; i <= 1; i++){
-            for (int j = -1; i <= 1; j++){
+            for (int j = -1; j <= 1; j++){
                 if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9) 
                     validPoints.add(new Point(p.x + i, p.y + j));
             }

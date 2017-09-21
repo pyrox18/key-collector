@@ -34,16 +34,19 @@ public class KeyDiskStrategy extends MoveStrategy {
         int x = 3;
         int y = 3;
 
-        for (int i = x; i >= 0; i--) {
-            for (int j = y; j > 0; j--) {
-                if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9)
-                    validPoints.add(new Point(p.x + i, p.y + j));
-                else if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
-                        validPoints.add(new Point(p.x - i, p.y - j));
-            }
+        for (int i = 1; i <= x; i++) {
+            if (p.y + i > -1 && p.y + i < 9)
+                validPoints.add(new Point(p.x, p.y + i));
+            if (p.y - i > -1 && p.y - i < 9)
+                validPoints.add(new Point(p.x, p.y - i));
         }
-        y--;
-
+        
+        for (int j = 1; j <= y; j++) {
+            if (p.x + j > -1 && p.x + j < 9)
+                validPoints.add(new Point(p.x + j, p.y));
+            if (p.x - j > -1 && p.x - j < 9)
+                validPoints.add(new Point(p.x - j, p.y));
+        }
         return validPoints;
     }
 }

@@ -35,13 +35,17 @@ public class DonkeyStrategy extends MoveStrategy {
         int y = 3;
 
         for (int i = x; i >= 0; i--) {
+            if (y > 0) {
                 for (int j = y; j >= -y; j = j - y){
-                    if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9)
-                        validPoints.add(new Point(p.x + i, p.y + j));
-                    else if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
+                    if (j != 0) {
+                        if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9)
+                            validPoints.add(new Point(p.x + i, p.y + j));
+                        if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
                             validPoints.add(new Point(p.x - i, p.y - j));
+                    }        
                 }
-            y--;
+                y--;
+            }
         }
 
         return validPoints;

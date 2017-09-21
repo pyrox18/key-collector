@@ -36,19 +36,19 @@ public class DefaultStrategy extends MoveStrategy {
 
         for (int i = x; i >= 0; i--) {
             if (i == 0) {
-                for (int j = y; j > 0; j--) {
+                for (int j = x; j > 0; j--) {
                     if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9)
                         validPoints.add(new Point(p.x + i, p.y + j));
-                    else if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
-                            validPoints.add(new Point(p.x - i, p.y - j));
+                    if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
+                        validPoints.add(new Point(p.x - i, p.y - j));
                 }
             }
             else {
                 for (int j = y; j >= -y; j = j - y){
                     if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9)
                         validPoints.add(new Point(p.x + i, p.y + j));
-                    else if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
-                            validPoints.add(new Point(p.x - i, p.y - j));
+                    if (p.x - i > -1 && p.x - i < 9 && p.y - j > -1 && p.y - j < 9)
+                        validPoints.add(new Point(p.x - i, p.y - j));
                 }
             }  
             y--;
