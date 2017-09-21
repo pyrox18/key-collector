@@ -44,8 +44,8 @@ public class SquareClickListener implements ActionListener{
             if (specialPiece != null) {
                 specialPiece.interact(player);
             }
-            boardView.refreshBoard();
             board.advanceTurn();
+            boardView.refreshBoard();
         }
     } 
 }

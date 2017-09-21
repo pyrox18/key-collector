@@ -88,6 +88,16 @@ public class Board {
     }
 
     /**
+     * Gets the player of the next turn.
+     * 
+     * @author Haryz
+     * @return a player - the player of the next turn 
+     */
+    public Player getNextPlayer() {
+        return players.get((playerTurn + 1) % players.size());
+    }
+
+    /**
      * Initialises the board for a new game.
      * Clears the board, then adds players and special pieces to the board.
      * 

@@ -1,5 +1,8 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Point;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,9 +38,11 @@ public class BoardView extends JPanel {
                 Square square = board.getSquare(i, j);
                 buttons[i][j] = new SquareButton(square);
                 buttons[i][j].addActionListener(new SquareClickListener(this, buttons[i][j]));
+                buttons[i][j].setOpaque(true);
                 add(buttons[i][j]);
             }
         }
+        refreshBoard();
     }
 
     /**
@@ -59,10 +64,17 @@ public class BoardView extends JPanel {
      * @return a boolean - true if the refresh is successful
      */
     public boolean refreshBoard() {
+        ArrayList<Point> validPoints = board.getCurrentPlayer().getValidMoveLocations();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 SquareButton button = buttons[i][j];
                 button.setIcon(button.getSquare().getTopMostImageIcon());
+                if (validPoints.contains(new Point(i, j))) {
+                    button.setBackground(Color.GREEN);
+                }
+                else {
+                    button.setBackground(null);
+                }
             }
         }
 
