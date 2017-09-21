@@ -72,6 +72,9 @@ public class BoardView extends JPanel {
                 if (validPoints.contains(new Point(i, j))) {
                     button.setBackground(Color.GREEN);
                 }
+                else if (button.getSquare().equals(board.getCurrentPlayer().getSquare())) {
+                    button.setBackground(Color.ORANGE);
+                }
                 else {
                     button.setBackground(null);
                 }
