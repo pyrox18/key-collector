@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -21,6 +22,10 @@ public class BoardView extends JPanel {
      * A 2-dimensional array of square buttons that are present on the board.
      */
     private SquareButton[][] buttons;
+    /**
+     * A boolean that indicates whether the current game has ended or not.
+     */
+    private boolean gameEnded;
 
     /**
      * Constructor for the BoardView class.
@@ -30,6 +35,7 @@ public class BoardView extends JPanel {
      */
     public BoardView() {
         super(new GridLayout(9, 9));
+        gameEnded = false;
         board = Board.getInstance();
         buttons = new SquareButton[9][9];
         board.initializeBoard();
@@ -39,6 +45,9 @@ public class BoardView extends JPanel {
                 buttons[i][j] = new SquareButton(square);
                 buttons[i][j].addActionListener(new SquareClickListener(this, buttons[i][j]));
                 buttons[i][j].setOpaque(true);
+                if (i == 4 && j == 4) {
+                    square.getSpecialPiece().addListener(new ChestUnlockListener(this));
+                }
                 add(buttons[i][j]);
             }
         }
@@ -64,23 +73,56 @@ public class BoardView extends JPanel {
      * @return a boolean - true if the refresh is successful
      */
     public boolean refreshBoard() {
-        ArrayList<Point> validPoints = board.getCurrentPlayer().getValidMoveLocations();
+        if (!gameEnded) {
+            ArrayList<Point> validPoints = board.getCurrentPlayer().getValidMoveLocations();
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    SquareButton button = buttons[i][j];
+                    button.setIcon(button.getSquare().getTopMostImageIcon());
+                    if (validPoints.contains(new Point(i, j))) {
+                        button.setBackground(Color.GREEN);
+                    }
+                    else if (button.getSquare().equals(board.getCurrentPlayer().getSquare())) {
+                        button.setBackground(Color.ORANGE);
+                    }
+                    else {
+                        button.setBackground(null);
+                    }
+                }
+            }
+        }
+        else {
+            endOfGame();
+        }
+
+        return true;
+    }
+
+    /**
+     * Repaints the buttons of the board and detaches click listeners when the game ends.
+     * 
+     * @author Haryz
+     */
+    public void endOfGame() {
+        gameEnded = true;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 SquareButton button = buttons[i][j];
                 button.setIcon(button.getSquare().getTopMostImageIcon());
-                if (validPoints.contains(new Point(i, j))) {
-                    button.setBackground(Color.GREEN);
-                }
-                else if (button.getSquare().equals(board.getCurrentPlayer().getSquare())) {
-                    button.setBackground(Color.ORANGE);
-                }
-                else {
-                    button.setBackground(null);
+                button.setBackground(Color.GREEN);
+                for (ActionListener al : button.getActionListeners()) {
+                    button.removeActionListener(al);
                 }
             }
         }
+    }
 
-        return true;
+    /**
+     * Gets the boolean that indicates if the game has ended.
+     * 
+     * @return The gameEnded attribute
+     */
+    public boolean isGameEnded() {
+        return gameEnded;
     }
 }
