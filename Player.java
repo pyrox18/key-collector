@@ -77,6 +77,7 @@ public class Player extends Piece {
      * @return a boolean - true if the key is successfully added and the movement strategy is set, else false
      */
     public boolean pickupKey(Key key) {
+        keys.remove(key);
         keys.add(0, key);
         movementStrategy = key.getStrategy();
         return true;
