@@ -56,4 +56,15 @@ public class DefaultStrategy extends MoveStrategy {
 
         return validPoints;
     }
+
+    /**
+     * Gets a string containing the name of the strategy.
+     * 
+     * @author  Haryz
+     * @return  The strategy's name as a string.
+     */
+    @Override
+    public String toString() {
+        return "DefaultStrategy";
+    }
 }
