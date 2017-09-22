@@ -64,6 +64,12 @@ public class Player extends Piece {
                 String[] keyCoordinates = dataList.get(i).split(",");
                 keys.add((Key) Board.getInstance().getSquare(Integer.parseInt(keyCoordinates[0]), Integer.parseInt(keyCoordinates[1])).getSpecialPiece());
             }
+            if (keys.size() < 1) {
+                movementStrategy = new DefaultStrategy();
+            }
+            else {
+                movementStrategy = keys.get(0).getStrategy();
+            }
         }
     }
 
