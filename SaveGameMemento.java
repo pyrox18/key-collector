@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A class used to save the state of SaveGameOriginator.
  * 
