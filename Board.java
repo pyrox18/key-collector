@@ -98,6 +98,16 @@ public class Board {
     public Player getNextPlayer() {
         return players.get((playerTurn + 1) % players.size());
     }
+    
+    /**
+     * Gets the list of players on the board.
+     * 
+     * @author Haryz
+     * @return The player list
+     */
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
 
     /**
      * Initialises the board for a new game.

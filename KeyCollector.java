@@ -11,6 +11,10 @@ public class KeyCollector extends JFrame {
      * The view object for the board.
      */
     private BoardView boardView;
+    /**
+     * The scoreboard panel.
+     */
+    private Scoreboard scoreboard;
 
     /**
      * Constructor for the KeyCollector class.
@@ -23,8 +27,10 @@ public class KeyCollector extends JFrame {
         super("Key Collector");
         setLayout(new BorderLayout());
         boardView = new BoardView();
+        scoreboard = Scoreboard.getInstance();
         add(boardView, BorderLayout.CENTER);
-        setSize(800, 600);
+        add(scoreboard, BorderLayout.EAST);
+        setSize(1100, 600);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
