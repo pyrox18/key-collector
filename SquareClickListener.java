@@ -5,36 +5,49 @@ import java.awt.event.*;
  * @author  Ramanan R Muralitharan (1141128291)
  */
 public class SquareClickListener implements ActionListener{
+    /**
+     * The board view.
+     */
+    private BoardView boardView;
+    /**
+     * The button that is clicked.
+     */
+    private SquareButton button;
 
-    private Square square;
     /**
      * Default constructor for the SquareClickListener class.
-     * Does not do anything.
+     * Sets the square button that is clicked.
      * 
      * @author  Ramanan
      */
-    public SquareClickListener() {}
+    public SquareClickListener(BoardView boardView, SquareButton button) {
+        this.boardView = boardView;
+        this.button = button;
+    }
     
     /**
      * Moves the player to the clicked square.
      * If successful, the player reference is removed from the square he was in, and the player turn advances.
      * 
      * @author  Ramanan
+     * @author  Haryz
      * @param   evt The mouse click on the square.
-     * @param   square The square to move to.
      */
-    public void actionPerformed(ActionEvent evt, Square square) {
+    public void actionPerformed(ActionEvent evt) {
         Board board = Board.getInstance();
         Player player = board.getCurrentPlayer();
+        Square newSquare = button.getSquare();
         Square oldSquare = player.getSquare();
-        if (player.move(square)) {
-            square.placePlayer(player);
+        if (player.move(newSquare)) {
             oldSquare.removePlayer(player);
-            SpecialPiece specialPiece = square.getSpecialPiece();
+            SpecialPiece specialPiece = newSquare.getSpecialPiece();
             if (specialPiece != null) {
                 specialPiece.interact(player);
             }
-            board.advanceTurn();
+            if (!boardView.isGameEnded()) {
+                board.advanceTurn();
+                boardView.refreshBoard();
+            }
         }
     } 
 }

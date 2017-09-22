@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.Point;
 
 /**
  * A player piece that each player uses in the game.
@@ -76,6 +77,7 @@ public class Player extends Piece {
      * @return a boolean - true if the key is successfully added and the movement strategy is set, else false
      */
     public boolean pickupKey(Key key) {
+        keys.remove(key);
         keys.add(0, key);
         movementStrategy = key.getStrategy();
         return true;
@@ -91,5 +93,15 @@ public class Player extends Piece {
     public boolean move(Square square) {
         boolean isMoveSuccessful = this.movementStrategy.move(this, square);
         return isMoveSuccessful;
+    }
+
+    /**
+     * Gets the square points where a valid move can be made by the player.
+     * 
+     * @author Haryz
+     * @return An ArrayList of valid movement points.
+     */
+    public ArrayList<Point> getValidMoveLocations() {
+        return movementStrategy.getValidMoveLocations(this);
     }
 }

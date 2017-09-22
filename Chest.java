@@ -1,5 +1,6 @@
 /**
  * A chest piece that can be unlocked by players who have picked up all available keys.
+ * Uses the observer design pattern to monitor if the chest has been unlocked.
  * 
  * @author      Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
@@ -45,6 +46,9 @@ public class Chest extends SpecialPiece {
     @Override
     public boolean interact(Player player) {
         boolean isChestUnlocked = this.unlockChest(player.getNumberOfKeys());
+        if (isChestUnlocked) {
+            notifyListeners();
+        }
         return isChestUnlocked;
     }
 }
