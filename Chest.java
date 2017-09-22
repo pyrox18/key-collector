@@ -10,10 +10,6 @@ public class Chest extends SpecialPiece {
      * The number of keys required to unlock the chest.
      */
     private int keysRequired;
-    /**
-     * The icon path for the chest.
-     */
-    private String iconPath;
 
     /**
      * Constructor for the Chest class.
@@ -28,7 +24,6 @@ public class Chest extends SpecialPiece {
     public Chest(Square square, String iconPath, int keysRequired) {
         super(square, iconPath);
         this.keysRequired = keysRequired;
-        this.iconPath = iconPath;
     }
 
     /**
@@ -69,7 +64,7 @@ public class Chest extends SpecialPiece {
         String str = "chest|";
         str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
         str.concat("|");
-        str.concat(iconPath);
+        str.concat(getIconPath());
         str.concat("|");
         str.concat(Integer.toString(keysRequired));
         return str;

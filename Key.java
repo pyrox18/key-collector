@@ -9,10 +9,6 @@ public class Key extends SpecialPiece {
      * The movement strategy tied to the key.
      */
     private MoveStrategy strategy;
-    /**
-     * The icon path for the key's icon.
-     */
-    private String iconPath;
 
     /**
      * Constructor for the Key class.
@@ -26,7 +22,6 @@ public class Key extends SpecialPiece {
      */
     public Key(Square square, String iconPath, MoveStrategy strategy) {
         super(square, iconPath);
-        this.iconPath = iconPath;
         this.strategy = strategy;
     }
 
@@ -48,7 +43,6 @@ public class Key extends SpecialPiece {
         else {
             String[] squareCoordinates = data[1].split(",");
             setSquare(Board.getInstance().getSquare(Integer.parseInt(squareCoordinates[0]), Integer.parseInt(squareCoordinates[1])));
-            iconPath = data[2];
             switch (data[3]) {
                 case "MonkeyStrategy":
                     strategy = new MonkeyStrategy();
@@ -106,7 +100,7 @@ public class Key extends SpecialPiece {
         String str = "key|";
         str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
         str.concat("|");
-        str.concat(iconPath);
+        str.concat(getIconPath());
         str.concat("|");
         str.concat(strategy.toString());
         return str;

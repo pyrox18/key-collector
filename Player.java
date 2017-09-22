@@ -21,10 +21,6 @@ public class Player extends Piece {
      * The movement strategy that the player is currently using to move on the board.
      */
     private MoveStrategy movementStrategy;
-    /**
-     * The icon path for the player.
-     */
-    private String iconPath;
 
     /**
      * Constructor for the Player class.
@@ -38,7 +34,6 @@ public class Player extends Piece {
      */
     public Player(Square square, String iconPath, String playerName) {
         super(square, iconPath);
-        this.iconPath = iconPath;
         this.playerName = playerName;
         keys = new ArrayList<Key>();
         movementStrategy = new DefaultStrategy();
@@ -64,7 +59,6 @@ public class Player extends Piece {
             ArrayList<String> dataList = new ArrayList<String>(Arrays.asList(data));
             String[] squareCoordinates = dataList.get(1).split(",");
             setSquare(Board.getInstance().getSquare(Integer.parseInt(squareCoordinates[0]), Integer.parseInt(squareCoordinates[1])));
-            iconPath = dataList.get(2);
             playerName = dataList.get(3);
             for (int i = 4; i < dataList.size(); i++) {
                 String[] keyCoordinates = dataList.get(i).split(",");
@@ -152,7 +146,7 @@ public class Player extends Piece {
         String str = "player|";
         str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
         str.concat("|");
-        str.concat(iconPath);
+        str.concat(getIconPath());
         str.concat("|");
         str.concat(playerName);
         for (Key key : keys) {

@@ -20,6 +20,11 @@ public abstract class Piece {
     private ImageIcon icon;
 
     /**
+     * The icon path for the piece.
+     */
+    private String iconPath;
+
+    /**
      * Constructor for the Piece class.
      * Sets the square that the piece is initially on.
      * Sets the icon for the piece.
@@ -30,6 +35,7 @@ public abstract class Piece {
      */
     public Piece(Square square, String iconPath){
         this.square = square;
+        this.iconPath = iconPath;
         icon = new ImageIcon(getClass().getResource(iconPath));
     }
 
@@ -61,5 +67,14 @@ public abstract class Piece {
      */
     public ImageIcon getIcon () {
         return icon;
+    }
+
+    /**
+     * Gets the path for the piece's icon.
+     * 
+     * @return the iconPath
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 }
