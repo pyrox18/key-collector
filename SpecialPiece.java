@@ -65,4 +65,13 @@ import java.util.ArrayList;
             listener.update();
         }
     }
+
+    /**
+     * Gets the special piece's data in the form of a string.
+     * 
+     * @author Haryz
+     * @return A string containing the special piece's data.
+     */
+    @Override
+    public abstract String toString();
 }
