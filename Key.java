@@ -49,26 +49,26 @@ public class Key extends SpecialPiece {
             String[] squareCoordinates = data[1].split(",");
             setSquare(Board.getInstance().getSquare(Integer.parseInt(squareCoordinates[0]), Integer.parseInt(squareCoordinates[1])));
             iconPath = data[2];
-        }
-        switch (data[3]) {
-            case "MonkeyStrategy":
-                strategy = new MonkeyStrategy();
-                break;
-            case "PinkeyStrategy":
-                strategy = new PinkeyStrategy();
-                break;
-            case "KeyNoteStrategy":
-                strategy = new KeyNoteStrategy();
-                break;
-            case "KeyDiskStrategy":
-                strategy = new KeyDiskStrategy();
-                break;
-            case "DonkeyStrategy":
-                strategy = new DonkeyStrategy();
-                break;
-            case "DefaultStrategy":
-            default:
-                strategy = new DefaultStrategy();
+            switch (data[3]) {
+                case "MonkeyStrategy":
+                    strategy = new MonkeyStrategy();
+                    break;
+                case "PinkeyStrategy":
+                    strategy = new PinkeyStrategy();
+                    break;
+                case "KeyNoteStrategy":
+                    strategy = new KeyNoteStrategy();
+                    break;
+                case "KeyDiskStrategy":
+                    strategy = new KeyDiskStrategy();
+                    break;
+                case "DonkeyStrategy":
+                    strategy = new DonkeyStrategy();
+                    break;
+                case "DefaultStrategy":
+                default:
+                    strategy = new DefaultStrategy();
+            }
         }
     }
 
