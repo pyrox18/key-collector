@@ -35,6 +35,7 @@ public class SquareClickListener implements ActionListener{
      */
     public void actionPerformed(ActionEvent evt) {
         Board board = Board.getInstance();
+        Scoreboard scoreboard = Scoreboard.getInstance();
         Player player = board.getCurrentPlayer();
         Square newSquare = button.getSquare();
         Square oldSquare = player.getSquare();
@@ -47,6 +48,7 @@ public class SquareClickListener implements ActionListener{
             if (!boardView.isGameEnded()) {
                 board.advanceTurn();
                 boardView.refreshBoard();
+                scoreboard.refreshScoreboard();
             }
         }
     } 
