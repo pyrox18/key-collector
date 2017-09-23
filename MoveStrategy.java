@@ -37,4 +37,13 @@ public abstract class MoveStrategy {
      * @return  an ArrayList of Points.
      */
     public abstract ArrayList<Point> getValidMoveLocations(Player player);
+
+    /**
+     * Gets a string containing the name of the strategy.
+     * 
+     * @author  Haryz
+     * @return  The strategy's name as a string.
+     */
+    @Override
+    public abstract String toString();
 }

@@ -110,6 +110,26 @@ public class Board {
     }
 
     /**
+     * Gets the current player turn.
+     * 
+     * @author Ramanan
+     * @return an int - the counter for the current player
+     */
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
+    /**
+     * Gets all the players in the board.
+     * 
+     * @author Ramanan
+     * @return an array list of player - all the players on the board 
+     */
+    public ArrayList<Player> getAllPlayers() {
+        return players;
+    }
+
+    /**
      * Initialises the board for a new game.
      * Clears the board, then adds players and special pieces to the board.
      * 

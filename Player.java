@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.Point;
 
 /**
@@ -36,6 +37,40 @@ public class Player extends Piece {
         this.playerName = playerName;
         keys = new ArrayList<Key>();
         movementStrategy = new DefaultStrategy();
+    }
+
+    /**
+     * Constructor for the Player class.
+     * Constructs the class based on a string with the same format as the string returned
+     * by the toString method.
+     * 
+     * @author Haryz
+     * @param  str A string containing the key data.
+     * @throws Error if the string format is not recognised.
+     */
+    public Player(String str) {
+        super(new Square(9, 9), str.split("\\|")[2]);
+        String[] data = str.split("\\|");
+        if (data[0] != "player") {
+            throw new Error("Bad player string format");
+        }
+        else {
+            keys = new ArrayList<Key>();
+            ArrayList<String> dataList = new ArrayList<String>(Arrays.asList(data));
+            String[] squareCoordinates = dataList.get(1).split(",");
+            setSquare(Board.getInstance().getSquare(Integer.parseInt(squareCoordinates[0]), Integer.parseInt(squareCoordinates[1])));
+            playerName = dataList.get(3);
+            for (int i = 4; i < dataList.size(); i++) {
+                String[] keyCoordinates = dataList.get(i).split(",");
+                keys.add((Key) Board.getInstance().getSquare(Integer.parseInt(keyCoordinates[0]), Integer.parseInt(keyCoordinates[1])).getSpecialPiece());
+            }
+            if (keys.size() < 1) {
+                movementStrategy = new DefaultStrategy();
+            }
+            else {
+                movementStrategy = keys.get(0).getStrategy();
+            }
+        }
     }
 
     /**
@@ -103,5 +138,28 @@ public class Player extends Piece {
      */
     public ArrayList<Point> getValidMoveLocations() {
         return movementStrategy.getValidMoveLocations(this);
+    }
+
+    /**
+     * Gets the player's data in the form of a string.
+     * Example: "player|0,8|/icons/p1.gif|Can Ser|4,4|2,3|6,2"
+     * 
+     * @author Haryz
+     * @return A string containing the player's data.
+     */
+    @Override
+    public String toString() {
+        String str = "player|";
+        str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
+        str.concat("|");
+        str.concat(getIconPath());
+        str.concat("|");
+        str.concat(playerName);
+        for (Key key : keys) {
+            str.concat("|");
+            Point keyLocation = key.getSquare().getPosition();
+            str.concat(Integer.toString(keyLocation.x) + "," + Integer.toString(keyLocation.y));
+        }
+        return str;
     }
 }
