@@ -5,6 +5,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.lang.Object;
 
+// TODO : write/read chest icon to file
+// TODO : error handling for file IO operations
+
 /**
  * A class that is used to save and load the state of the current game.
  * The states that are saved include the current player turn, player data and key data.
@@ -44,15 +47,15 @@ public class SaveFile {
         playerData = new ArrayList(4);
         keyData = new ArrayList(7);
 
-        playerTurn = getInstance().getPlayerTurn();
+        playerTurn = Board.getInstance().getPlayerTurn();
 
-        for (Player player : getInstance().getAllPlayers()) {
+        for (Player player : Board.getInstance().getAllPlayers()) {
             playerData.add(player);
         }
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                Object key = getInstance().getSquare(i,j).getSpecialPiece();
+                Object key = Board.getInstance().getSquare(i,j).getSpecialPiece();
                 if (key instanceof Key) {
                     keyData.add((Key) key);
                 }
@@ -75,7 +78,7 @@ public class SaveFile {
      */
     private SaveFile(int playerTurn, ArrayList<Player> playerData, ArrayList<Key> keyData) {
         this.playerTurn = playerTurn;
-        this.plalyerData = playerData;
+        this.playerData = playerData;
         this.keyData = keyData;
     }
 
@@ -153,7 +156,7 @@ public class SaveFile {
         String fileString = null;
         int line = 1;
 
-        int fileTurn = null;
+        int fileTurn = 0;
         ArrayList<Key> fileKey = new ArrayList(5);
         ArrayList<Player> filePlayer = new ArrayList(4);
         while(bufferReader.readLine() != null) {

@@ -53,7 +53,7 @@ public class Scoreboard extends JPanel {
         for (Component c : getComponents()) {
             remove(c);
         }
-        ArrayList<Player> players = board.getPlayers();
+        ArrayList<Player> players = board.getAllPlayers();
         for (int i = 0; i < 4; i++) {
             Player player = players.get(i);
             JLabel playerLabel = new JLabel(player.getIcon());

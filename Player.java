@@ -74,6 +74,26 @@ public class Player extends Piece {
     }
 
     /**
+     * Copy constructor for the Player class.
+     * Copies an existing Player instance and sets the player name.
+     * 
+     * @author Ramanan
+     * @param player - an existing player instance used for copy
+     * @param playerName - the name of the player
+     */
+    public Player(Player player, String playerName) {
+        super(player.getSquare(), player.getIconPath());
+        this.playerName = player.getPlayerName();
+        keys = player.getKeys();
+        if (keys.size() < 1) {
+            movementStrategy = new DefaultStrategy();
+        }
+        else {
+            movementStrategy = keys.get(0).getStrategy();
+        }
+    }
+
+    /**
      * Gets the player's name
      * 
      * @author Haryz

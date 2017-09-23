@@ -98,16 +98,6 @@ public class Board {
     public Player getNextPlayer() {
         return players.get((playerTurn + 1) % players.size());
     }
-    
-    /**
-     * Gets the list of players on the board.
-     * 
-     * @author Haryz
-     * @return The player list
-     */
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
 
     /**
      * Gets the current player turn.
@@ -194,6 +184,51 @@ public class Board {
             square.setSpecialPiece(new Key(square, keyIconPaths[i], strategies.get(i)));
         }
         
+        return true;
+    }
+
+    /**
+     * Restores the board to a previously saved state.
+     * Clears the board, then adds players and special pieces to the board.
+     * 
+     * @author Ramanan
+     * @param  playerTurn - the current player turn
+     * @param  players - the list of players
+     * @param  keys - the list of keys
+     * @return a boolean - true if the board is successfully initialised
+     */
+    public boolean initializeBoard(int playerTurn, ArrayList<Player> players, ArrayList<Key> keys) {
+        final String[] playerNames = {
+            "Ban Gei",
+            "Ark Imides",
+            "Can Ser",
+            "Doz Ciztem"
+        };
+        final String chestIconPath = "/icons/chest.gif"; // TODO : read the path from file
+
+        clearBoard();
+
+        Square chestSquare = getSquare(4, 4);
+        chestSquare.setSpecialPiece(new Chest(chestSquare, chestIconPath, 5));
+
+        for (Key key : keys) {
+            Square square = key.getSquare();
+            square.setSpecialPiece(key);
+        }
+
+        Player p1 = new Player(players.get(0), playerNames[0]);
+        players.add(p1);
+        p1.getSquare().placePlayer(p1);
+        Player p2 = new Player(players.get(1), playerNames[1]);
+        players.add(p2);
+        p2.getSquare().placePlayer(p2);
+        Player p3 = new Player(players.get(2), playerNames[2]);
+        players.add(p3);
+        p3.getSquare().placePlayer(p3);
+        Player p4 = new Player(players.get(3), playerNames[3]);
+        players.add(p4);
+        p4.getSquare().placePlayer(p4);
+
         return true;
     }
 

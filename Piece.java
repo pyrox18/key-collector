@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
  * (players, keys and chest).
  * 
  * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Ramanan R Muralitharan (1141128291)
  */
 
 public abstract class Piece {
@@ -63,7 +64,7 @@ public abstract class Piece {
      * Gets the icon for the piece.
      * 
      * @author  Ramanan
-     * @return  the icon
+     * @return  an image icon - the icon used for the piece 
      */
     public ImageIcon getIcon () {
         return icon;
@@ -72,7 +73,8 @@ public abstract class Piece {
     /**
      * Gets the path for the piece's icon.
      * 
-     * @return the iconPath
+     * @author Ramanan
+     * @return a string - the string used to fetch the icon
      */
     public String getIconPath() {
         return iconPath;
