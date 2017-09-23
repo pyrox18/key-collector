@@ -187,7 +187,7 @@ public abstract class Piece {
      * Produces a new Chest object.
      * 
      * @author  Haryz
-     * @return  An instance of Key.
+     * @return  An instance of Chest.
      */
     public static Chest generateNewChest() {
         Square square = Board.getInstance().getSquare(4, 4);
