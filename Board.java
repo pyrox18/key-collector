@@ -27,6 +27,10 @@ public class Board {
      * A counter to keep track of the current player turn.
      */
     private int playerTurn;
+    /**
+     * The save manager for the board
+     */
+    private SaveManager saveManager;
 
     /**
      * Constructor for Board class.
@@ -43,6 +47,7 @@ public class Board {
             }
         }
         players = new ArrayList<Player>();
+        saveManager = new SaveManager();
     }
 
     /**
@@ -117,6 +122,18 @@ public class Board {
      */
     public ArrayList<Player> getAllPlayers() {
         return players;
+    }
+
+    public void save() {
+        saveManager.save("testsave.txt");
+    }
+
+    public void load() {
+        saveManager.load("testsave.txt");
+    }
+
+    public void quickLoad() {
+        saveManager.load();
     }
 
     /**
