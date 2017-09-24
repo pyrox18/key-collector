@@ -192,7 +192,9 @@ public class SaveFile {
                     fileTurn = Integer.parseInt(fileString); 
                 }
                 else if (line < 7) {
+                    Key key = new Key(fileString);
                     fileKey.add(new Key(fileString));
+                    Board.getInstance().getSquare(key.getSquare().getPosition().x, key.getSquare().getPosition().y).setSpecialPiece(key);
                 }
                 else if (line < 11) {
                     filePlayer.add(new Player(fileString));
