@@ -1,4 +1,5 @@
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * 
@@ -15,7 +16,13 @@ public class LoadListener implements ActionListener {
 
     public void actionPerformed(ActionEvent evt) {
         board = Board.getInstance();
+        ArrayList<Player> players = board.getAllPlayers();
+        
+        for (Player player : players) {
+            player.getSquare().removePlayer(player);
+        }
         board.load();
         boardView.refreshBoard();
+        
     }
 }

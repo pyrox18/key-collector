@@ -33,6 +33,8 @@ public class SaveFile {
      */
     private ArrayList<Key> keyData;
 
+    public SaveFile() {}
+
     /**
      * A constructor for SaveFile class.
      * Sets the player turn to the current player turn.
@@ -44,8 +46,8 @@ public class SaveFile {
      * @param filename - the name of the file to save into
      */
     public SaveFile(String fileName) {
-        playerData = new ArrayList(4);
-        keyData = new ArrayList(7);
+        playerData = new ArrayList<Player>(4);
+        keyData = new ArrayList<Key>(7);
 
         playerTurn = Board.getInstance().getPlayerTurn();
 
@@ -161,8 +163,8 @@ public class SaveFile {
         int line = 1;
         
         int fileTurn = 0;
-        ArrayList<Key> fileKey = new ArrayList(5);
-        ArrayList<Player> filePlayer = new ArrayList(4);
+        ArrayList<Key> fileKey = new ArrayList<Key>(5);
+        ArrayList<Player> filePlayer = new ArrayList<Player>(4);
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferReader = new BufferedReader(fileReader);

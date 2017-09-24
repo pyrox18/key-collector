@@ -10,6 +10,10 @@ public class SaveManager {
      */
     private SaveFile currentSave;
 
+    public SaveManager() {
+        currentSave = new SaveFile();
+    }
+
     /**
      * Saves the current state of the game
      * 
@@ -32,7 +36,6 @@ public class SaveManager {
      */
     public void load(String fileName) {
         SaveFile newSave = currentSave.load(fileName);
-        System.out.println("Check load 1");
         Board.getInstance().initializeBoard(newSave.getPlayerTurn(), newSave.getPlayerData(), newSave.getKeyData());
     }
 

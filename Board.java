@@ -228,19 +228,18 @@ public class Board {
         }
 
         Player p1 = new Player(players.get(0));
-        players.add(p1);
+        this.players.add(p1);
         p1.getSquare().placePlayer(p1);
         Player p2 = new Player(players.get(1));
-        players.add(p2);
+        this.players.add(p2);
         p2.getSquare().placePlayer(p2);
         Player p3 = new Player(players.get(2));
-        players.add(p3);
+        this.players.add(p3);
         p3.getSquare().placePlayer(p3);
         Player p4 = new Player(players.get(3));
-        players.add(p4);
+        this.players.add(p4);
         p4.getSquare().placePlayer(p4);
-
-        System.out.println(p1.getSquare().getPosition());
+        
         this.playerTurn = playerTurn;
 
         return true;

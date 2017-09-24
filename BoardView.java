@@ -75,13 +75,11 @@ public class BoardView extends JPanel {
     public boolean refreshBoard() {
         if (!gameEnded) {
             board = Board.getInstance();
-            System.out.println("Check load 2");
-            System.out.println(board.getCurrentPlayer().getSquare().getPosition()); // ERROR
             ArrayList<Point> validPoints = board.getCurrentPlayer().getValidMoveLocations();
-            System.out.println("Check load 3");
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     SquareButton button = buttons[i][j];
+                    button.setIcon(null);
                     button.setIcon(button.getSquare().getTopMostImageIcon());
                     if (validPoints.contains(new Point(i, j))) {
                         button.setBackground(Color.GREEN);
@@ -94,7 +92,6 @@ public class BoardView extends JPanel {
                     }
                 }
             }
-            System.out.println("Check load n");
         }
         else {
             endOfGame();
