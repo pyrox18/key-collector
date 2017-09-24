@@ -2,9 +2,11 @@
 
 A board game designed for an Object-Oriented Analysis &amp; Design project.
 
+If you're reading this from somewhere that isn't a clone of the GitHub repository, you can find the repository at https://github.com/pyrox18/key-collector.
+
 ## Installation and Usage
 
-1. Clone the repository.
+1. Clone the repository. Skip if you're not reading this on GitHub.
 2. Run `javac *.java` to compile all of the source files.
 3. Run `java KeyCollector` to run the program.
 
