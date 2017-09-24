@@ -1,0 +1,10 @@
+0
+key|2,3|/icons/donkey.gif|DonkeyStrategy
+key|2,4|/icons/pinkey.gif|PinkeyStrategy
+key|3,5|/icons/monkey.gif|MonkeyStrategy
+key|4,3|/icons/keydisk.gif|KeyDiskStrategy
+key|8,4|/icons/keynote.gif|KeyNoteStrategy
+player|4,4|/icons/p1.gif|Ban Gei
+player|2,6|/icons/p2.gif|Ark Imides
+player|6,2|/icons/p3.gif|Can Ser
+player|6,6|/icons/p4.gif|Doz Ciztem

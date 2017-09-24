@@ -38,7 +38,7 @@ public class Player extends Piece {
         keys = new ArrayList<Key>();
         movementStrategy = new DefaultStrategy();
     }
-
+    
     /**
      * Constructor for the Player class.
      * Constructs the class based on a string with the same format as the string returned
@@ -51,7 +51,7 @@ public class Player extends Piece {
     public Player(String str) {
         super(new Square(9, 9), str.split("\\|")[2]);
         String[] data = str.split("\\|");
-        if (data[0] != "player") {
+        if (!data[0].equals("player")) {
             throw new Error("Bad player string format");
         }
         else {
@@ -81,7 +81,7 @@ public class Player extends Piece {
      * @param player - an existing player instance used for copy
      * @param playerName - the name of the player
      */
-    public Player(Player player, String playerName) {
+    public Player(Player player) {
         super(player.getSquare(), player.getIconPath());
         this.playerName = player.getPlayerName();
         keys = player.getKeys();
@@ -170,15 +170,15 @@ public class Player extends Piece {
     @Override
     public String toString() {
         String str = "player|";
-        str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
-        str.concat("|");
-        str.concat(getIconPath());
-        str.concat("|");
-        str.concat(playerName);
+        str = str + getSquare().getPosition().x + "," + getSquare().getPosition().y;
+        str = str + "|";
+        str = str + getIconPath();
+        str = str + "|";
+        str = str + playerName;
         for (Key key : keys) {
-            str.concat("|");
+            str = str + "|";
             Point keyLocation = key.getSquare().getPosition();
-            str.concat(Integer.toString(keyLocation.x) + "," + Integer.toString(keyLocation.y));
+            str = str + Integer.toString(keyLocation.x) + "," + Integer.toString(keyLocation.y);
         }
         return str;
     }

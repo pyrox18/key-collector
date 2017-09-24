@@ -32,6 +32,7 @@ public class SaveManager {
      */
     public void load(String fileName) {
         SaveFile newSave = currentSave.load(fileName);
+        System.out.println("Check load 1");
         Board.getInstance().initializeBoard(newSave.getPlayerTurn(), newSave.getPlayerData(), newSave.getKeyData());
     }
 

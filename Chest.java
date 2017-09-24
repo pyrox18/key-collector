@@ -45,6 +45,8 @@ public class Chest extends SpecialPiece {
      */
     @Override
     public boolean interact(Player player) {
+        Board.getInstance().save();
+        Board.getInstance().load();
         boolean isChestUnlocked = this.unlockChest(player.getNumberOfKeys());
         if (isChestUnlocked) {
             notifyListeners();
@@ -62,11 +64,11 @@ public class Chest extends SpecialPiece {
     @Override
     public String toString() {
         String str = "chest|";
-        str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
-        str.concat("|");
-        str.concat(getIconPath());
-        str.concat("|");
-        str.concat(Integer.toString(keysRequired));
+        str = str + getSquare().getPosition().x + "," + getSquare().getPosition().y;
+        str = str + "|";
+        str = str + getIconPath();
+        str = str + "|";
+        str = str + Integer.toString(keysRequired);
         return str;
     }
 

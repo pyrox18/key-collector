@@ -50,6 +50,7 @@ public class SaveFile {
         playerTurn = Board.getInstance().getPlayerTurn();
 
         for (Player player : Board.getInstance().getAllPlayers()) {
+        //    System.out.println(player);
             playerData.add(player);
         }
 
@@ -132,12 +133,12 @@ public class SaveFile {
     private void writeToFile(String fileName) {
         String writeString = playerTurn + "\n";
         for (Key key : keyData) {
-            writeString = writeString + key;
+            writeString = writeString + key + "\n";
         }
         for (Player player : playerData) {
-            writeString = writeString + player;
+            writeString = writeString + player + "\n";
         }
-
+        
         try {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -165,24 +166,29 @@ public class SaveFile {
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferReader = new BufferedReader(fileReader);
-            while(bufferReader.readLine() != null) {
-                fileString = bufferReader.readLine();
+            fileString = bufferReader.readLine();
+            while(fileString != null) {
                 if (line == 1) {
                     fileTurn = Integer.parseInt(fileString); 
                 }
-                else if (line < 6) {
+                else if (line < 7) {
                     fileKey.add(new Key(fileString));
                 }
-                else if (line < 10) {
+                else if (line < 11) {
                     filePlayer.add(new Player(fileString));
                 }
+                fileString = bufferReader.readLine();
                 line++;
             }
             bufferReader.close();
             
         } catch (Exception e) {
-            System.out.println("Unable to read from file '" + fileName + "" );
+            System.out.println("Unable to read from file '" + fileName + "'" );
         }
+        System.out.println(fileTurn + "\n");
+        System.out.println(fileKey + "\n");
+        System.out.println(filePlayer + "\n");
+
         return new SaveFile(fileTurn, filePlayer, fileKey);
     }
 }
