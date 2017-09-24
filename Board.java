@@ -124,16 +124,22 @@ public class Board {
         return players;
     }
 
+    /**
+     * Saves the state of board.
+     * 
+     * @author Ramanan
+     */
     public void save() {
         saveManager.save("testsave.txt");
     }
 
+    /**
+     * Loads the board to a previous state.
+     * 
+     * @author Ramanan
+     */
     public void load() {
         saveManager.load("testsave.txt");
-    }
-
-    public void quickLoad() {
-        saveManager.load();
     }
 
     /**
@@ -214,8 +220,7 @@ public class Board {
      * @param  keys - the list of keys
      * @return a boolean - true if the board is successfully initialised
      */
-    public boolean initializeBoard(int playerTurn, ArrayList<Player> players, ArrayList<Key> keys) {
-        final String chestIconPath = "/icons/chest.gif"; // TODO : read the path from file
+    public boolean initializeBoard(int playerTurn, ArrayList<Player> players, ArrayList<Key> keys, String chestIconPath) {
 
         clearBoard();
 

@@ -5,9 +5,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.lang.Object;
 
-// TODO : write/read chest icon to file
-// TODO : error handling for file IO operations
-
 /**
  * A class that is used to save and load the state of the current game.
  * The states that are saved include the current player turn, player data and key data.
@@ -32,6 +29,11 @@ public class SaveFile {
      * Array list of all of the keys
      */
     private ArrayList<Key> keyData;
+
+    /**
+     * Icon path to the chest piece
+     */
+    private String chestIconPath;
 
     public SaveFile() {}
 
@@ -58,9 +60,12 @@ public class SaveFile {
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                Object key = Board.getInstance().getSquare(i,j).getSpecialPiece();
-                if (key instanceof Key) {
-                    keyData.add((Key) key);
+                Object specialPiece = Board.getInstance().getSquare(i,j).getSpecialPiece();
+                if (specialPiece instanceof Key) {
+                    keyData.add((Key) specialPiece);
+                }
+                else if (specialPiece instanceof Chest) {
+                    chestIconPath = specialPiece.toString();
                 }
             }    
         }
@@ -79,10 +84,11 @@ public class SaveFile {
      * @param playerData - the players' data from file
      * @param keyData - the keys' data from file
      */
-    private SaveFile(int playerTurn, ArrayList<Player> playerData, ArrayList<Key> keyData) {
+    private SaveFile(int playerTurn, ArrayList<Player> playerData, ArrayList<Key> keyData, String chestIconPath) {
         this.playerTurn = playerTurn;
         this.playerData = playerData;
         this.keyData = keyData;
+        this.chestIconPath = chestIconPath;
     }
 
     /**
@@ -116,6 +122,16 @@ public class SaveFile {
     }
 
     /**
+     * Gets the chest icon path
+     * 
+     * @author Ramanan
+     * @return the chestIconPath
+     */
+    public String getChestIconPath() {
+        return chestIconPath;
+    }
+
+    /**
      * Loads this instance to a previous state.
      * This instance's attributes are set to the attributes from a previous session.
      * 
@@ -140,6 +156,7 @@ public class SaveFile {
         for (Player player : playerData) {
             writeString = writeString + player + "\n";
         }
+        writeString = writeString + chestIconPath;
         
         try {
             FileWriter fileWriter = new FileWriter(fileName);
@@ -165,6 +182,7 @@ public class SaveFile {
         int fileTurn = 0;
         ArrayList<Key> fileKey = new ArrayList<Key>(5);
         ArrayList<Player> filePlayer = new ArrayList<Player>(4);
+        String fileChestPath = null;
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferReader = new BufferedReader(fileReader);
@@ -179,6 +197,9 @@ public class SaveFile {
                 else if (line < 11) {
                     filePlayer.add(new Player(fileString));
                 }
+                else {
+                    fileChestPath = fileString.split("\\|")[2];
+                }
                 fileString = bufferReader.readLine();
                 line++;
             }
@@ -187,7 +208,7 @@ public class SaveFile {
         } catch (Exception e) {
             System.out.println("Unable to read from file '" + fileName + "'" );
         }
-        return new SaveFile(fileTurn, filePlayer, fileKey);
+        return new SaveFile(fileTurn, filePlayer, fileKey, fileChestPath);
     }
 }
 

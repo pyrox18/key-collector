@@ -23,10 +23,6 @@ public class SaveManager {
     public void save(String fileName) {
         currentSave = new SaveFile(fileName);
     }
-
-    public void load() {
-        Board.getInstance().initializeBoard(currentSave.getPlayerTurn(), currentSave.getPlayerData(), currentSave.getKeyData());
-    }
     
     /**
      * Loads the board's state to a previous state.
@@ -36,7 +32,7 @@ public class SaveManager {
      */
     public void load(String fileName) {
         SaveFile newSave = currentSave.load(fileName);
-        Board.getInstance().initializeBoard(newSave.getPlayerTurn(), newSave.getPlayerData(), newSave.getKeyData());
+        Board.getInstance().initializeBoard(newSave.getPlayerTurn(), newSave.getPlayerData(), newSave.getKeyData(), newSave.getChestIconPath());
     }
 
 }

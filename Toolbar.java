@@ -16,12 +16,14 @@ public class Toolbar extends JPanel {
         this.boardview = boardview;
         board = Board.getInstance();
 
-        JButton saveButton = new JButton("save");
-        JButton loadButton = new JButton("load");
+        JButton newGameButton = new JButton("New Game");
+        JButton saveButton = new JButton("Save");
+        JButton loadButton = new JButton("Load");
 
         saveButton.addActionListener(new SaveListener(boardview));
         loadButton.addActionListener(new LoadListener(boardview));
 
+        add(newGameButton);
         add(saveButton);
         add(loadButton);
     }

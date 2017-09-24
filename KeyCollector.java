@@ -33,7 +33,7 @@ public class KeyCollector extends JFrame {
         toolbar = new Toolbar(boardView);
         add(boardView, BorderLayout.CENTER);
         add(scoreboard, BorderLayout.EAST);
-        add(toolbar, BorderLayout.WEST);
+        add(toolbar, BorderLayout.NORTH);
         setSize(1100, 600);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
