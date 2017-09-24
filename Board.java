@@ -27,6 +27,10 @@ public class Board {
      * A counter to keep track of the current player turn.
      */
     private int playerTurn;
+    /**
+     * The save manager for the board
+     */
+    private SaveManager saveManager;
 
     /**
      * Constructor for Board class.
@@ -43,6 +47,7 @@ public class Board {
             }
         }
         players = new ArrayList<Player>();
+        saveManager = new SaveManager();
     }
 
     /**
@@ -117,6 +122,18 @@ public class Board {
      */
     public ArrayList<Player> getAllPlayers() {
         return players;
+    }
+
+    public void save() {
+        saveManager.save("testsave.txt");
+    }
+
+    public void load() {
+        saveManager.load("testsave.txt");
+    }
+
+    public void quickLoad() {
+        saveManager.load();
     }
 
     /**
@@ -198,12 +215,9 @@ public class Board {
      * @return a boolean - true if the board is successfully initialised
      */
     public boolean initializeBoard(int playerTurn, ArrayList<Player> players, ArrayList<Key> keys) {
-        final String[] playerNames = {
-            "Ban Gei",
-            "Ark Imides",
-            "Can Ser",
-            "Doz Ciztem"
-        };
+        System.out.println(playerTurn + "\n");
+        System.out.println(players + "\n");
+        System.out.println(keys + "\n");
         final String chestIconPath = "/icons/chest.gif"; // TODO : read the path from file
 
         clearBoard();
@@ -216,18 +230,20 @@ public class Board {
             square.setSpecialPiece(key);
         }
 
-        Player p1 = new Player(players.get(0), playerNames[0]);
+        Player p1 = new Player(players.get(0));
         players.add(p1);
         p1.getSquare().placePlayer(p1);
-        Player p2 = new Player(players.get(1), playerNames[1]);
+        Player p2 = new Player(players.get(1));
         players.add(p2);
         p2.getSquare().placePlayer(p2);
-        Player p3 = new Player(players.get(2), playerNames[2]);
+        Player p3 = new Player(players.get(2));
         players.add(p3);
         p3.getSquare().placePlayer(p3);
-        Player p4 = new Player(players.get(3), playerNames[3]);
+        Player p4 = new Player(players.get(3));
         players.add(p4);
         p4.getSquare().placePlayer(p4);
+
+        this.playerTurn = playerTurn;
 
         return true;
     }

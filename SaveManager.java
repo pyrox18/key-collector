@@ -20,13 +20,20 @@ public class SaveManager {
         currentSave = new SaveFile(fileName);
     }
 
+    public void load() {
+        Board.getInstance().initializeBoard(currentSave.getPlayerTurn(), currentSave.getPlayerData(), currentSave.getKeyData());
+    }
+    
     /**
-     * Loads the game to a previous state.
+     * Loads the board's state to a previous state.
      * 
      * @author Ramanan
-     * @param saveGame - the SaveGameOriginator that needs to be loaded from
+     * @param  fileName - the saved file to load from
      */
     public void load(String fileName) {
         SaveFile newSave = currentSave.load(fileName);
+        System.out.println("Check load 1");
+        Board.getInstance().initializeBoard(newSave.getPlayerTurn(), newSave.getPlayerData(), newSave.getKeyData());
     }
+
 }

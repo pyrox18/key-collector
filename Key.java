@@ -37,7 +37,7 @@ public class Key extends SpecialPiece {
     public Key(String str) {
         super(new Square(9, 9), str.split("\\|")[2]);
         String[] data = str.split("\\|");
-        if (data[0] != "key") {
+        if (!data[0].equals("key")) {
             throw new Error("Bad key string format");
         }
         else {
@@ -98,11 +98,11 @@ public class Key extends SpecialPiece {
     @Override
     public String toString() {
         String str = "key|";
-        str.concat(getSquare().getPosition().x + "," + getSquare().getPosition().y);
-        str.concat("|");
-        str.concat(getIconPath());
-        str.concat("|");
-        str.concat(strategy.toString());
+        str = str + getSquare().getPosition().x + "," + getSquare().getPosition().y;
+        str = str + "|";
+        str = str + getIconPath();
+        str = str + "|";
+        str = str + strategy.toString();
         return str;
     }
 }

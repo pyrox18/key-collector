@@ -50,6 +50,7 @@ public class SaveFile {
         playerTurn = Board.getInstance().getPlayerTurn();
 
         for (Player player : Board.getInstance().getAllPlayers()) {
+        //    System.out.println(player);
             playerData.add(player);
         }
 
@@ -130,17 +131,22 @@ public class SaveFile {
      * @param filename - the file to save into 
      */
     private void writeToFile(String fileName) {
-        FileWriter fileWriter = new FileWriter(fileName);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        
         String writeString = playerTurn + "\n";
         for (Key key : keyData) {
-            writeString = writeString + key;
+            writeString = writeString + key + "\n";
         }
         for (Player player : playerData) {
-            writeString = writeString + player;
+            writeString = writeString + player + "\n";
         }
-        bufferedWriter.close();
+        
+        try {
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(writeString);
+            bufferedWriter.close();
+        } catch (Exception e) {
+            System.out.println("Unable to write to file '" + fileName + "" );
+        }
     }
 
     /**
@@ -151,28 +157,38 @@ public class SaveFile {
      * @return a save file - the saved file from a previous session
      */
     private SaveFile readFromFile(String fileName) {
-        FileReader fileReader = new FileReader(fileName);
-        BufferedReader bufferReader = new BufferedReader(fileReader);
         String fileString = null;
         int line = 1;
-
+        
         int fileTurn = 0;
         ArrayList<Key> fileKey = new ArrayList(5);
         ArrayList<Player> filePlayer = new ArrayList(4);
-        while(bufferReader.readLine() != null) {
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferReader = new BufferedReader(fileReader);
             fileString = bufferReader.readLine();
-            if (line == 1) {
-                fileTurn = Integer.parseInt(fileString); 
+            while(fileString != null) {
+                if (line == 1) {
+                    fileTurn = Integer.parseInt(fileString); 
+                }
+                else if (line < 7) {
+                    fileKey.add(new Key(fileString));
+                }
+                else if (line < 11) {
+                    filePlayer.add(new Player(fileString));
+                }
+                fileString = bufferReader.readLine();
+                line++;
             }
-            else if (line < 6) {
-                fileKey.add(new Key(fileString));
-            }
-            else if (line < 10) {
-                filePlayer.add(new Player(fileString));
-            }
-            line++;
+            bufferReader.close();
+            
+        } catch (Exception e) {
+            System.out.println("Unable to read from file '" + fileName + "'" );
         }
-        bufferReader.close();
+        System.out.println(fileTurn + "\n");
+        System.out.println(fileKey + "\n");
+        System.out.println(filePlayer + "\n");
+
         return new SaveFile(fileTurn, filePlayer, fileKey);
     }
 }
