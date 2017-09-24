@@ -1,6 +1,6 @@
 import java.awt.*;
 
-import javax.swing.JButton;
+import javax.swing.*;
 
 /**
  * Toolbar
@@ -19,8 +19,8 @@ public class Toolbar extends JPanel {
         JButton saveButton = new JButton("save");
         JButton loadButton = new JButton("load");
 
-        saveButton.addActionListener(new SaveListener());
-        load.addActionListener(new LoadListener());
+        saveButton.addActionListener(new SaveListener(boardview));
+        loadButton.addActionListener(new LoadListener(boardview));
 
         add(saveButton);
         add(loadButton);

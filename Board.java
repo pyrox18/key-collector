@@ -215,9 +215,6 @@ public class Board {
      * @return a boolean - true if the board is successfully initialised
      */
     public boolean initializeBoard(int playerTurn, ArrayList<Player> players, ArrayList<Key> keys) {
-        System.out.println(playerTurn + "\n");
-        System.out.println(players + "\n");
-        System.out.println(keys + "\n");
         final String chestIconPath = "/icons/chest.gif"; // TODO : read the path from file
 
         clearBoard();
@@ -243,6 +240,7 @@ public class Board {
         players.add(p4);
         p4.getSquare().placePlayer(p4);
 
+        System.out.println(p1.getSquare().getPosition());
         this.playerTurn = playerTurn;
 
         return true;

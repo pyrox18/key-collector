@@ -45,8 +45,6 @@ public class Chest extends SpecialPiece {
      */
     @Override
     public boolean interact(Player player) {
-        Board.getInstance().save();
-        Board.getInstance().load();
         boolean isChestUnlocked = this.unlockChest(player.getNumberOfKeys());
         if (isChestUnlocked) {
             notifyListeners();

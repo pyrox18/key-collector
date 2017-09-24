@@ -50,7 +50,7 @@ public class SaveFile {
         playerTurn = Board.getInstance().getPlayerTurn();
 
         for (Player player : Board.getInstance().getAllPlayers()) {
-        //    System.out.println(player);
+
             playerData.add(player);
         }
 
@@ -185,10 +185,6 @@ public class SaveFile {
         } catch (Exception e) {
             System.out.println("Unable to read from file '" + fileName + "'" );
         }
-        System.out.println(fileTurn + "\n");
-        System.out.println(fileKey + "\n");
-        System.out.println(filePlayer + "\n");
-
         return new SaveFile(fileTurn, filePlayer, fileKey);
     }
 }
