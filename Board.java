@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A board that contains 9x9 squares by default.
@@ -150,63 +148,29 @@ public class Board {
      * @return a boolean - true if the board is successfully initialised
      */
     public boolean initializeBoard() {
-        final String[] playerNames = {
-            "Ban Gei",
-            "Ark Imides",
-            "Can Ser",
-            "Doz Ciztem"
-        };
-        final String[] playerIconPaths = {
-            "/icons/p1.gif",
-            "/icons/p2.gif",
-            "/icons/p3.gif",
-            "/icons/p4.gif"
-        };
-        final String[] keyIconPaths = {
-            "/icons/monkey.gif",
-            "/icons/donkey.gif",
-            "/icons/keydisk.gif",
-            "/icons/pinkey.gif",
-            "/icons/keynote.gif"
-        };
-        final String chestIconPath = "/icons/chest.gif";
-
         clearBoard();
 
-        Player p1 = new Player(getSquare(0, 0), playerIconPaths[0], playerNames[0]);
-        players.add(p1);
-        getSquare(0, 0).placePlayer(p1);
-        Player p2 = new Player(getSquare(0, 8), playerIconPaths[1], playerNames[1]);
-        players.add(p2);
-        getSquare(0, 8).placePlayer(p2);
-        Player p3 = new Player(getSquare(8, 0), playerIconPaths[2], playerNames[2]);
-        players.add(p3);
-        getSquare(8, 0).placePlayer(p3);
-        Player p4 = new Player(getSquare(8, 8), playerIconPaths[3], playerNames[3]);
-        players.add(p4);
-        getSquare(8, 8).placePlayer(p4);
-
-        Square chestSquare = getSquare(4, 4);
-        chestSquare.setSpecialPiece(new Chest(chestSquare, chestIconPath, 5));
-
-        ArrayList<MoveStrategy> strategies = new ArrayList<MoveStrategy>(Arrays.asList(
-            new MonkeyStrategy(),
-            new DonkeyStrategy(),
-            new KeyDiskStrategy(),
-            new PinkeyStrategy(),
-            new KeyNoteStrategy()
-        ));
-
-        for (int i = 0; i < strategies.size(); i++) {
-            Square square;
-            do {
-                int randomX = ThreadLocalRandom.current().nextInt(0, 9);
-                int randomY = ThreadLocalRandom.current().nextInt(0, 9);
-                square = getSquare(randomX, randomY);
-            } while (square.isPlayerSpawn() || square.getSpecialPiece() != null);
-            square.setSpecialPiece(new Key(square, keyIconPaths[i], strategies.get(i)));
+        for (int i = 0; i < 4; i++) {
+            try {
+                Player player = Piece.generateNewPlayer();
+                players.add(player);
+            } catch (Exception e) {
+                System.err.println(e);
+                System.exit(0);
+            }
         }
-        
+
+        Piece.generateNewChest();
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                Piece.generateNewKey();
+            } catch (Exception e) {
+                System.err.println(e);
+                System.exit(0);
+            }
+        }
+
         return true;
     }
 
