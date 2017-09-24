@@ -24,7 +24,5 @@ public class Toolbar extends JPanel {
 
         add(saveButton);
         add(loadButton);
-
-        setVisible
     }
 }
