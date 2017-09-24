@@ -3,6 +3,7 @@ import java.awt.event.*;
  * A class for listening mouse clicks on the squares.
  * 
  * @author  Ramanan R Muralitharan (1141128291)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 public class SquareClickListener implements ActionListener{
     /**

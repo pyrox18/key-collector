@@ -18,10 +18,12 @@ public class BoardView extends JPanel {
      * The model instance for the game board.
      */
     private Board board;
+
     /**
      * A 2-dimensional array of square buttons that are present on the board.
      */
     private SquareButton[][] buttons;
+    
     /**
      * A boolean that indicates whether the current game has ended or not.
      */
@@ -31,7 +33,7 @@ public class BoardView extends JPanel {
      * Constructor for the BoardView class.
      * Sets up a 9x9 GridLayout to house the square buttons, and adds those buttons.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public BoardView() {
         super(new GridLayout(9, 9));
@@ -57,10 +59,10 @@ public class BoardView extends JPanel {
     /**
      * Gets a square button on the board.
      * 
-     * @author Haryz
-     * @param  x The x-coordinate of the button.
-     * @param  y The y-coordinate of the button.
-     * @return A square button.
+     * @author  Haryz
+     * @param   x The x-coordinate of the button.
+     * @param   y The y-coordinate of the button.
+     * @return  A square button.
      */
     public SquareButton getSquareButton(int x, int y) {
         return buttons[x][y];
@@ -100,7 +102,7 @@ public class BoardView extends JPanel {
     /**
      * Repaints the buttons of the board and detaches click listeners when the game ends.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void endOfGame() {
         gameEnded = true;
@@ -119,7 +121,7 @@ public class BoardView extends JPanel {
     /**
      * Gets the boolean that indicates if the game has ended.
      * 
-     * @return The gameEnded attribute
+     * @return  The gameEnded attribute
      */
     public boolean isGameEnded() {
         return gameEnded;

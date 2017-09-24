@@ -4,7 +4,8 @@ import java.util.ArrayList;
 /**
  * An abstract class for the movement strategies of each key.
  * 
- * @author Ramanan R Muralitharan (1141128291)
+ * @author  Ramanan R Muralitharan (1141128291)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 
 public abstract class MoveStrategy {
@@ -27,7 +28,6 @@ public abstract class MoveStrategy {
         }
         return false;
     }
-
 
     /**
      * Retrieves the squares that a player can move towards.

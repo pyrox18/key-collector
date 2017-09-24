@@ -8,7 +8,7 @@ public interface CustomListener {
     /**
      * Performs an operation when the listener is updated of an event.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void update();
 }

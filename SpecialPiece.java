@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * on a certain square.
  * Uses the observer design pattern.
  * 
- * @author      Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 
  public abstract class SpecialPiece extends Piece {
@@ -19,9 +19,9 @@ import java.util.ArrayList;
      * Sets the square that the special piece is initially on, and provides the piece's icon path.
      * Also initialises the list of listeners.
      * 
-     * @author Haryz
-     * @param  square The square that the special piece is initially on.
-     * @param  iconPath The path to the icon for the piece.
+     * @author  Haryz
+     * @param   square The square that the special piece is initially on.
+     * @param   iconPath The path to the icon for the piece.
      */
     public SpecialPiece(Square square, String iconPath) {
         super(square, iconPath);
@@ -31,16 +31,16 @@ import java.util.ArrayList;
     /**
      * Method for a player to interact with the special piece.
      * 
-     * @author Haryz
-     * @param  player The player that is interacting with the special piece.
-     * @return a boolean
+     * @author  Haryz
+     * @param   player The player that is interacting with the special piece.
+     * @return  A boolean.
      */
     public abstract boolean interact(Player player);
 
     /**
      * Adds a listener for the chest.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void addListener(CustomListener listener) {
         listeners.add(listener);
@@ -49,7 +49,7 @@ import java.util.ArrayList;
     /**
      * Removes a listener for the chest.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void removeListener(CustomListener listener) {
         listeners.remove(listener);
@@ -58,7 +58,7 @@ import java.util.ArrayList;
     /**
      * Notifies all listeners when an event occurs.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void notifyListeners() {
         for (CustomListener listener : listeners) {
@@ -69,8 +69,8 @@ import java.util.ArrayList;
     /**
      * Gets the special piece's data in the form of a string.
      * 
-     * @author Haryz
-     * @return A string containing the special piece's data.
+     * @author  Haryz
+     * @return  A string containing the special piece's data.
      */
     @Override
     public abstract String toString();

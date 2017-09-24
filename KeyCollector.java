@@ -5,17 +5,22 @@ import javax.swing.JFrame;
  * The main application class for the KeyCollector game.
  * 
  * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Ramanan R Muralitharan (1141128291)
  */
 public class KeyCollector extends JFrame {
     /**
      * The view object for the board.
      */
     private BoardView boardView;
+
     /**
      * The scoreboard panel.
      */
     private Scoreboard scoreboard;
 
+    /**
+     * The toolbar panel.
+     */
     private Toolbar toolbar;
 
     /**
@@ -23,7 +28,8 @@ public class KeyCollector extends JFrame {
      * Creates a BorderLayout window with the title set to "Key Collector",
      * then adds all the necessary view objects.
      * 
-     * @author Haryz
+     * @author  Haryz
+     * @author  Ramanan
      */
     public KeyCollector() {
         super("Key Collector");
@@ -42,7 +48,7 @@ public class KeyCollector extends JFrame {
     /**
      * Main method for the KeyCollector application.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public static void main(String[] args) {
         new KeyCollector();
