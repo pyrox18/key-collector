@@ -74,6 +74,7 @@ public class BoardView extends JPanel {
      */
     public boolean refreshBoard() {
         if (!gameEnded) {
+            board = Board.getInstance();
             ArrayList<Point> validPoints = board.getCurrentPlayer().getValidMoveLocations();
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
@@ -124,5 +125,18 @@ public class BoardView extends JPanel {
      */
     public boolean isGameEnded() {
         return gameEnded;
+    }
+
+    /**
+     * Resets the board view to use new square models.
+     * Used when the square models are recreated due to a new game being initiated.
+     */
+    public void resetBoardView() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                buttons[i][j].setSquare(board.getSquare(i, j));
+            }
+        }
+        refreshBoard();
     }
 }

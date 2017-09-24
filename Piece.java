@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
  * Uses the factory method design pattern to generate subclass instances.
  * 
  * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Ramanan R Muralitharan (1141128291)
  */
 
 public abstract class Piece {
@@ -25,6 +26,11 @@ public abstract class Piece {
      */
     private ImageIcon icon;
 
+    /**
+     * The icon path for the piece.
+     */
+    private String iconPath;
+    
     /**
      * A list of player name strings used for generating Player objects.
      */
@@ -103,6 +109,7 @@ public abstract class Piece {
      */
     public Piece(Square square, String iconPath){
         this.square = square;
+        this.iconPath = iconPath;
         icon = new ImageIcon(getClass().getResource(iconPath));
     }
 
@@ -130,12 +137,22 @@ public abstract class Piece {
      * Gets the icon for the piece.
      * 
      * @author  Ramanan
-     * @return  the icon
+     * @return  an image icon - the icon used for the piece 
      */
     public ImageIcon getIcon () {
         return icon;
     }
 
+    /**
+     * Gets the path for the piece's icon.
+     * 
+     * @author Ramanan
+     * @return a string - the string used to fetch the icon
+     */
+    public String getIconPath() {
+        return iconPath;
+    }
+    
     /**
      * Produces a new Player object based on the fixed dataset given.
      * 
@@ -194,5 +211,15 @@ public abstract class Piece {
         Chest chest = new Chest(square, chestIconPath, 5);
         square.setSpecialPiece(chest);
         return chest;
+    }
+
+    /**
+     * Resets the generated piece counters for players and keys.
+     * 
+     * @author  Haryz
+     */
+    public static void resetPiecesGenerated() {
+        playersGenerated = 0;
+        keysGenerated = 0;
     }
 }

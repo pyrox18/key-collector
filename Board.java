@@ -25,6 +25,10 @@ public class Board {
      * A counter to keep track of the current player turn.
      */
     private int playerTurn;
+    /**
+     * The save manager for the board
+     */
+    private SaveManager saveManager;
 
     /**
      * Constructor for Board class.
@@ -41,6 +45,7 @@ public class Board {
             }
         }
         players = new ArrayList<Player>();
+        saveManager = new SaveManager();
     }
 
     /**
@@ -96,15 +101,43 @@ public class Board {
     public Player getNextPlayer() {
         return players.get((playerTurn + 1) % players.size());
     }
-    
+
     /**
-     * Gets the list of players on the board.
+     * Gets the current player turn.
      * 
-     * @author Haryz
-     * @return The player list
+     * @author Ramanan
+     * @return an int - the counter for the current player
      */
-    public ArrayList<Player> getPlayers() {
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
+    /**
+     * Gets all the players in the board.
+     * 
+     * @author Ramanan
+     * @return an array list of player - all the players on the board 
+     */
+    public ArrayList<Player> getAllPlayers() {
         return players;
+    }
+
+    /**
+     * Saves the state of board.
+     * 
+     * @author Ramanan
+     */
+    public void save() {
+        saveManager.save("testsave.txt");
+    }
+
+    /**
+     * Loads the board to a previous state.
+     * 
+     * @author Ramanan
+     */
+    public void load() {
+        saveManager.load("testsave.txt");
     }
 
     /**
@@ -116,6 +149,7 @@ public class Board {
      */
     public boolean initializeBoard() {
         clearBoard();
+        playerTurn = 0;
 
         for (int i = 0; i < 4; i++) {
             try {
@@ -142,6 +176,46 @@ public class Board {
     }
 
     /**
+     * Restores the board to a previously saved state.
+     * Clears the board, then adds players and special pieces to the board.
+     * 
+     * @author Ramanan
+     * @param  playerTurn - the current player turn
+     * @param  players - the list of players
+     * @param  keys - the list of keys
+     * @return a boolean - true if the board is successfully initialised
+     */
+    public boolean initializeBoard(int playerTurn, ArrayList<Player> players, ArrayList<Key> keys, String chestIconPath) {
+
+        clearBoard();
+
+        Square chestSquare = getSquare(4, 4);
+        chestSquare.setSpecialPiece(new Chest(chestSquare, chestIconPath, 5));
+
+        for (Key key : keys) {
+            Square square = key.getSquare();
+            square.setSpecialPiece(key);
+        }
+
+        Player p1 = new Player(players.get(0));
+        this.players.add(p1);
+        p1.getSquare().placePlayer(p1);
+        Player p2 = new Player(players.get(1));
+        this.players.add(p2);
+        p2.getSquare().placePlayer(p2);
+        Player p3 = new Player(players.get(2));
+        this.players.add(p3);
+        p3.getSquare().placePlayer(p3);
+        Player p4 = new Player(players.get(3));
+        this.players.add(p4);
+        p4.getSquare().placePlayer(p4);
+        
+        this.playerTurn = playerTurn;
+
+        return true;
+    }
+
+    /**
      * Clears and resets the board's attributes. Private method.
      * 
      * @author Haryz
@@ -149,12 +223,12 @@ public class Board {
      */
     private boolean clearBoard() {
         players.clear();
-        squares = new Square[9][9];
         for (int i = 0; i < 9; i++) { // TODO: Refactor - redundant with constructor
             for (int j = 0; j < 9; j++) {
-                squares[i][j] = new Square(i,j);
+                squares[i][j].clear();
             }
         }
+        System.gc();
 
         return true;
     }

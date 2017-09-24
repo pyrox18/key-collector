@@ -16,6 +16,8 @@ public class KeyCollector extends JFrame {
      */
     private Scoreboard scoreboard;
 
+    private Toolbar toolbar;
+
     /**
      * Constructor for the KeyCollector class.
      * Creates a BorderLayout window with the title set to "Key Collector",
@@ -28,8 +30,10 @@ public class KeyCollector extends JFrame {
         setLayout(new BorderLayout());
         boardView = new BoardView();
         scoreboard = Scoreboard.getInstance();
+        toolbar = new Toolbar(boardView);
         add(boardView, BorderLayout.CENTER);
         add(scoreboard, BorderLayout.EAST);
+        add(toolbar, BorderLayout.NORTH);
         setSize(1100, 600);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

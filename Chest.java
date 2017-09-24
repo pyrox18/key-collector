@@ -51,4 +51,23 @@ public class Chest extends SpecialPiece {
         }
         return isChestUnlocked;
     }
+
+    /**
+     * Gets the chest's data in the form of a string.
+     * Example: "chest|4,4|/icons/chest.gif|5"
+     * 
+     * @author Haryz
+     * @return A string containing the chest's data.
+     */
+    @Override
+    public String toString() {
+        String str = "chest|";
+        str = str + getSquare().getPosition().x + "," + getSquare().getPosition().y;
+        str = str + "|";
+        str = str + getIconPath();
+        str = str + "|";
+        str = str + Integer.toString(keysRequired);
+        return str;
+    }
+
 }

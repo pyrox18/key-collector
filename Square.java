@@ -122,6 +122,15 @@ public class Square{
     }
 
     /**
+     * Reset specialPiece value that occupying the square to null.
+     * 
+     * @author Faishal  
+     */
+    public void removeSpecialPiece(){
+        specialPiece = null;
+    }
+
+    /**
      * Gets the icon for the piece on top of the square.
      * If there are players on the square, the method retrieves the icon of the fist player to land in the square.
      * If there are no players, the method retrieves the icon of the special piece on the square.
@@ -139,5 +148,15 @@ public class Square{
                 return null;
             }
         }
+    }
+
+    /**
+     * Clears the square's player list and special piece data.
+     * 
+     * @author  Haryz
+     */
+    public void clear() {
+        players.clear();
+        specialPiece = null;
     }
 }
