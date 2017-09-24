@@ -80,14 +80,12 @@ public class BoardView extends JPanel {
                 for (int j = 0; j < 9; j++) {
                     SquareButton button = buttons[i][j];
                     button.setIcon(button.getSquare().getTopMostImageIcon());
+                    button.setBackground(null);
                     if (validPoints.contains(new Point(i, j))) {
                         button.setBackground(Color.GREEN);
                     }
                     else if (button.getSquare().equals(board.getCurrentPlayer().getSquare())) {
                         button.setBackground(Color.ORANGE);
-                    }
-                    else {
-                        button.setBackground(null);
                     }
                 }
             }
@@ -125,6 +123,24 @@ public class BoardView extends JPanel {
      */
     public boolean isGameEnded() {
         return gameEnded;
+    }
+
+    /**
+     * Resets the end-of-game boolean value and reattaches button listeners, then refreshes the board.
+     * 
+     * @author  Haryz
+     */
+    public void newGame() {
+        gameEnded = false;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                buttons[i][j].addActionListener(new SquareClickListener(this, buttons[i][j]));
+                if (i == 4 && j == 4) {
+                    buttons[i][j].getSquare().getSpecialPiece().addListener(new ChestUnlockListener(this));
+                }
+            }
+        }
+        refreshBoard();
     }
 
     /**
