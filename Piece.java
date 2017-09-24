@@ -212,4 +212,14 @@ public abstract class Piece {
         square.setSpecialPiece(chest);
         return chest;
     }
+
+    /**
+     * Resets the generated piece counters for players and keys.
+     * 
+     * @author  Haryz
+     */
+    public static void resetPiecesGenerated() {
+        playersGenerated = 0;
+        keysGenerated = 0;
+    }
 }
