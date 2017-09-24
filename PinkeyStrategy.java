@@ -34,7 +34,7 @@ public class PinkeyStrategy extends MoveStrategy {
 
         for (int i = -1; i <= 1; i++){
             for (int j = -1; j <= 1; j++){
-                if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9) 
+                if (p.x + i > -1 && p.x + i < 9 && p.y + j > -1 && p.y + j < 9 && !(i == 0 && j ==0)) 
                     validPoints.add(new Point(p.x + i, p.y + j));
             }
         }
