@@ -149,6 +149,7 @@ public class Board {
      */
     public boolean initializeBoard() {
         clearBoard();
+        playerTurn = 0;
 
         for (int i = 0; i < 4; i++) {
             try {
@@ -222,12 +223,12 @@ public class Board {
      */
     private boolean clearBoard() {
         players.clear();
-        squares = new Square[9][9];
         for (int i = 0; i < 9; i++) { // TODO: Refactor - redundant with constructor
             for (int j = 0; j < 9; j++) {
                 squares[i][j] = new Square(i,j);
             }
         }
+        System.gc();
 
         return true;
     }
