@@ -79,7 +79,6 @@ public class BoardView extends JPanel {
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     SquareButton button = buttons[i][j];
-                    button.setIcon(null);
                     button.setIcon(button.getSquare().getTopMostImageIcon());
                     if (validPoints.contains(new Point(i, j))) {
                         button.setBackground(Color.GREEN);
