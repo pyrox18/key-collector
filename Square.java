@@ -149,4 +149,14 @@ public class Square{
             }
         }
     }
+
+    /**
+     * Clears the square's player list and special piece data.
+     * 
+     * @author  Haryz
+     */
+    public void clear() {
+        players.clear();
+        specialPiece = null;
+    }
 }

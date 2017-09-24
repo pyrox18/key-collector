@@ -225,7 +225,7 @@ public class Board {
         players.clear();
         for (int i = 0; i < 9; i++) { // TODO: Refactor - redundant with constructor
             for (int j = 0; j < 9; j++) {
-                squares[i][j] = new Square(i,j);
+                squares[i][j].clear();
             }
         }
         System.gc();
