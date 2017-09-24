@@ -37,6 +37,11 @@ public class Board {
     private SaveManager saveManager;
 
     /**
+     * The path of the save file to save to.
+     */
+    private final String saveFile = "save.txt";
+
+    /**
      * Constructor for Board class.
      * Sets the the size of board to 9x9 squares, and initialises the player list and save manager.
      * 
@@ -134,7 +139,7 @@ public class Board {
      * @author  Ramanan
      */
     public void save() {
-        saveManager.save("testsave.txt");
+        saveManager.save(saveFile);
     }
 
     /**
@@ -143,7 +148,7 @@ public class Board {
      * @author  Ramanan
      */
     public void load() {
-        saveManager.load("testsave.txt");
+        saveManager.load(saveFile);
     }
 
     /**
