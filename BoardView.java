@@ -89,6 +89,9 @@ public class BoardView extends JPanel {
                     else if (button.getSquare().equals(board.getCurrentPlayer().getSquare())) {
                         button.setBackground(Color.ORANGE);
                     }
+                    if (i == 4 && j == 4 && !button.getSquare().getSpecialPiece().hasListeners()) {
+                        button.getSquare().getSpecialPiece().addListener(new ChestUnlockListener(this));
+                    }
                 }
             }
         }

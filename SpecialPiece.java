@@ -67,6 +67,15 @@ import java.util.ArrayList;
     }
 
     /**
+     * Gets a boolean that indicates whether the special piece has listeners attached to it.
+     * 
+     * @author  Haryz
+     */
+    public boolean hasListeners() {
+        return !listeners.isEmpty();
+    }
+
+    /**
      * Gets the special piece's data in the form of a string.
      * 
      * @author  Haryz
