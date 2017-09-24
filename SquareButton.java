@@ -35,5 +35,15 @@ public class SquareButton extends JButton {
     public Square getSquare() {
         return square;
     }
+
+    /**
+     * Sets the square attached to the button.
+     * 
+     * @author  Haryz
+     * @param   square The square to set
+     */
+    public void setSquare(Square square) {
+        this.square = square;
+    }
 }
 
