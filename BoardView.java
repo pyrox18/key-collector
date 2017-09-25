@@ -114,9 +114,7 @@ public class BoardView extends JPanel {
                 SquareButton button = buttons[i][j];
                 button.setIcon(button.getSquare().getTopMostImageIcon());
                 button.setBackground(Color.GREEN);
-                for (ActionListener al : button.getActionListeners()) {
-                    button.removeActionListener(al);
-                }
+                button.setEnabled(false);
             }
         }
     }
@@ -139,10 +137,7 @@ public class BoardView extends JPanel {
         gameEnded = false;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                buttons[i][j].addActionListener(new SquareClickListener(this, buttons[i][j]));
-                if (i == 4 && j == 4) {
-                    buttons[i][j].getSquare().getSpecialPiece().addListener(new ChestUnlockListener(this));
-                }
+                buttons[i][j].setEnabled(true);
             }
         }
         refreshBoard();
