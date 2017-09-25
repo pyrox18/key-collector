@@ -4,6 +4,8 @@ import java.util.ArrayList;
  * A board that contains 9x9 squares by default.
  * This class is using singleton design pattern by having only one instance of
  * Board class in the program.
+ * This class is also part of the memento design pattern used for saving game states,
+ * with this class acting as an originator.
  * 
  * @author  Muhammad Faishal Dzaky (1141326988)
  * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)

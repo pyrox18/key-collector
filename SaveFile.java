@@ -10,6 +10,7 @@ import java.lang.Object;
  * The states that are saved include the current player turn, player data and key data.
  * Saves are made into text files.
  * A previous save is loaded from a text file.
+ * Uses the memento design pattern, where this class acts as the memento.
  * 
  * @author Ramanan R Muralitharan (1141128291)
  */

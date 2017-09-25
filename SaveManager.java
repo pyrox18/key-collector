@@ -1,5 +1,6 @@
 /**
  * A class used to manage saved states.
+ * Uses the memento design pattern, where this class acts as the caretaker.
  * 
  * @author  Ramanan R Muralitharan (1141128291)
  */
