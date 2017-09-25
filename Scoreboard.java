@@ -66,13 +66,19 @@ public class Scoreboard extends JPanel {
             add(new JLabel(player.getPlayerName()));
             ArrayList<Key> playerKeys = player.getKeys();
             for (int j = 0; j < 5; j++) {
+                JLabel keyLabel;
                 if (j < playerKeys.size()) {
                     Key key = playerKeys.get(j);
-                    add(new JLabel(key.getIcon()));
+                    keyLabel = new JLabel(key.getIcon());
                 }
                 else {
-                    add(new JLabel("Empty"));
+                    keyLabel = new JLabel("Empty");
                 }
+                if (j == 0) {
+                    keyLabel.setBackground(Color.GREEN);
+                    keyLabel.setOpaque(true);
+                }
+                add(keyLabel);
             }
         }
     }
