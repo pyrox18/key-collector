@@ -48,7 +48,12 @@ public class LoadListener implements ActionListener {
             }
         }
         board.load();
-        boardView.refreshBoard();
+        if (boardView.isGameEnded()) {
+            boardView.newGame();
+        }
+        else {
+            boardView.refreshBoard();
+        }
         scoreboard.refreshScoreboard();
     }
 }
