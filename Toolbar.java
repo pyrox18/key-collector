@@ -34,7 +34,7 @@ public class Toolbar extends JPanel {
         JButton loadButton = new JButton("Load");
 
         newGameButton.addActionListener(new NewGameClickListener(boardview));
-        saveButton.addActionListener(new SaveListener());
+        saveButton.addActionListener(new SaveListener(boardview));
         loadButton.addActionListener(new LoadListener(boardview));
 
         add(newGameButton);

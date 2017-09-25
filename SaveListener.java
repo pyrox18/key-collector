@@ -12,13 +12,19 @@ public class SaveListener implements ActionListener {
     private Board board;
 
     /**
+     * The board view.
+     */
+    private BoardView boardView;
+
+    /**
      * Constructor for the LoadListener class.
      * Sets the board reference for the class.
      * 
      * @author  Ramanan
      */
-    public SaveListener() {
+    public SaveListener(BoardView boardView) {
         board = Board.getInstance();
+        this.boardView = boardView;
     }
 
     /**
@@ -27,6 +33,8 @@ public class SaveListener implements ActionListener {
      * @author  Ramanan
      */
     public void actionPerformed(ActionEvent evt) {
-        board.save();
+        if (!boardView.isGameEnded()) {
+            board.save();
+        }
     }
 }
