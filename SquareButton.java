@@ -7,7 +7,6 @@ import javax.swing.*;
  * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 public class SquareButton extends JButton {
-
     /**
      * The square the button is assigned to.
      */

@@ -5,10 +5,10 @@ import java.util.ArrayList;
  * A class used to set the behaviours and specialize the movement strategy of "Key disk" key.
  * 
  * @author  Ramanan R Muralitharan (1141128291)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 
 public class KeyDiskStrategy extends MoveStrategy {
-
     /**
      * Default constructor for the KeyDiskStrategy class.
      * Does not do anything.

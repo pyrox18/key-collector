@@ -25,8 +25,9 @@ public class Scoreboard extends JPanel {
 
     /**
      * Constructor for the Scoreboard class.
+     * Sets the layout for the JPanel, gets the board instance and paints the scoreboard.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     private Scoreboard() {
         super(new GridLayout(4, 7));
@@ -37,8 +38,8 @@ public class Scoreboard extends JPanel {
     /**
      * Gets the instance of the scoreboard.
      * 
-     * @author Haryz
-     * @return the instance
+     * @author  Haryz
+     * @return  The instance of the scoreboard.
      */
     public static Scoreboard getInstance() {
         return instance;
@@ -47,7 +48,7 @@ public class Scoreboard extends JPanel {
     /**
      * Repaints the scoreboard with the current data from the board.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void refreshScoreboard() {
         for (Component c : getComponents()) {
@@ -65,13 +66,19 @@ public class Scoreboard extends JPanel {
             add(new JLabel(player.getPlayerName()));
             ArrayList<Key> playerKeys = player.getKeys();
             for (int j = 0; j < 5; j++) {
+                JLabel keyLabel;
                 if (j < playerKeys.size()) {
                     Key key = playerKeys.get(j);
-                    add(new JLabel(key.getIcon()));
+                    keyLabel = new JLabel(key.getIcon());
                 }
                 else {
-                    add(new JLabel("Empty"));
+                    keyLabel = new JLabel("Empty");
                 }
+                if (j == 0) {
+                    keyLabel.setBackground(Color.GREEN);
+                    keyLabel.setOpaque(true);
+                }
+                add(keyLabel);
             }
         }
     }

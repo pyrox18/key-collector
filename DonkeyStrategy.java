@@ -3,12 +3,13 @@ import java.util.ArrayList;
 
 /**
  * A class used to set the behaviours and specialize the movement strategy of "Donkey" key.
+ * Uses the strategy design pattern.
  * 
  * @author  Ramanan R Muralitharan (1141128291)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 
 public class DonkeyStrategy extends MoveStrategy {
-
     /**
      * Default constructor for the DonkeyStrategy class.
      * Does not do anything.

@@ -10,11 +10,11 @@ import java.lang.Object;
  * The states that are saved include the current player turn, player data and key data.
  * Saves are made into text files.
  * A previous save is loaded from a text file.
+ * Uses the memento design pattern, where this class acts as the memento.
  * 
  * @author Ramanan R Muralitharan (1141128291)
  */
 public class SaveFile {
-
     /**
      * The current player turn
      */
@@ -35,6 +35,12 @@ public class SaveFile {
      */
     private String chestIconPath;
 
+    /**
+     * Default constructor for the SaveFile class.
+     * Does not do anything.
+     * 
+     * @author  Ramanan
+     */
     public SaveFile() {}
 
     /**
@@ -44,8 +50,8 @@ public class SaveFile {
      * Sets the key data to the current states of all keys on the board.
      * Writes the current state of the instance into a text file.
      * 
-     * @author Ramanan
-     * @param filename - the name of the file to save into
+     * @author  Ramanan
+     * @param   fileName The name of the file to save into.
      */
     public SaveFile(String fileName) {
         playerData = new ArrayList<Player>(4);
@@ -54,7 +60,6 @@ public class SaveFile {
         playerTurn = Board.getInstance().getPlayerTurn();
 
         for (Player player : Board.getInstance().getAllPlayers()) {
-
             playerData.add(player);
         }
 
@@ -79,10 +84,10 @@ public class SaveFile {
      * Sets the key data to the current states of all keys in the file.
      * Does not save the new instance to file.
      * 
-     * @author Ramanan
-     * @param playerTurn - the player turn from file
-     * @param playerData - the players' data from file
-     * @param keyData - the keys' data from file
+     * @author  Ramanan
+     * @param   playerTurn The player turn from file.
+     * @param   playerData The players' data from file.
+     * @param   keyData The keys' data from file.
      */
     private SaveFile(int playerTurn, ArrayList<Player> playerData, ArrayList<Key> keyData, String chestIconPath) {
         this.playerTurn = playerTurn;
@@ -94,8 +99,8 @@ public class SaveFile {
     /**
      * Gets the current player turn.
      * 
-     * @author Ramanan
-     * @return an int - the counter for the current player turn
+     * @author  Ramanan
+     * @return  An int - the counter for the current player turn.
      */
     public int getPlayerTurn() {
         return playerTurn;
@@ -104,8 +109,8 @@ public class SaveFile {
     /**
      * Gets the players on the board.
      * 
-     * @author Ramanan
-     * @return an array list of players - the players on the board
+     * @author  Ramanan
+     * @return  An array list of players - the players on the board.
      */
     public ArrayList<Player> getPlayerData() {
         return playerData;
@@ -114,18 +119,18 @@ public class SaveFile {
     /**
      * Gets the keys on the board.
      * 
-     * @author Ramanan
-     * @return an array list of keys - the keys on the board
+     * @author  Ramanan
+     * @return  An array list of keys - the keys on the board.
      */
     public ArrayList<Key> getKeyData() {
         return keyData;
     }
 
     /**
-     * Gets the chest icon path
+     * Gets the chest icon path.
      * 
-     * @author Ramanan
-     * @return the chestIconPath
+     * @author  Ramanan
+     * @return  The chestIconPath.
      */
     public String getChestIconPath() {
         return chestIconPath;
@@ -135,8 +140,8 @@ public class SaveFile {
      * Loads this instance to a previous state.
      * This instance's attributes are set to the attributes from a previous session.
      * 
-     * @author Ramanan
-     * @param filename - the saved file to load from 
+     * @author  Ramanan
+     * @param   fileName The saved file to load from.
      */
     public SaveFile load(String fileName) {
         return readFromFile(fileName);
@@ -145,8 +150,8 @@ public class SaveFile {
     /**
      * Writes the current state of the instance into a file.
      * 
-     * @author Ramanan
-     * @param filename - the file to save into 
+     * @author  Ramanan
+     * @param   fileName The file to save into.
      */
     private void writeToFile(String fileName) {
         String writeString = playerTurn + "\n";
@@ -171,9 +176,9 @@ public class SaveFile {
     /**
      * Reads from a save file and creates a save file instance.
      * 
-     * @author Ramanan
-     * @param fileName - the saved file to load from
-     * @return a save file - the saved file from a previous session
+     * @author  Ramanan
+     * @param   fileName The saved file to load from.
+     * @return  A save file - the saved file from a previous session.
      */
     private SaveFile readFromFile(String fileName) {
         String fileString = null;

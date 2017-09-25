@@ -116,8 +116,8 @@ public abstract class Piece {
     /**
      * Gets the square that the piece is currently on.
      * 
-     * @author Haryz
-     * @return the square
+     * @author  Haryz
+     * @return  The square.
      */
     public Square getSquare() {
         return square;
@@ -126,8 +126,8 @@ public abstract class Piece {
     /**
      * Sets the square that the piece is currently on.
      * 
-     * @author Haryz
-     * @param square the square to set
+     * @author  Haryz
+     * @param   square The square to set
      */
     public void setSquare(Square square) {
         this.square = square;
@@ -137,17 +137,17 @@ public abstract class Piece {
      * Gets the icon for the piece.
      * 
      * @author  Ramanan
-     * @return  an image icon - the icon used for the piece 
+     * @return  An image icon - the icon used for the piece 
      */
-    public ImageIcon getIcon () {
+    public ImageIcon getIcon() {
         return icon;
     }
 
     /**
      * Gets the path for the piece's icon.
      * 
-     * @author Ramanan
-     * @return a string - the string used to fetch the icon
+     * @author  Ramanan
+     * @return  A string - the string used to fetch the icon
      */
     public String getIconPath() {
         return iconPath;

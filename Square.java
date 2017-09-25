@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
  * 
  * @author  Muhammad Faishal Dzaky (1141326988) 
  * @author  Ramanan R Muralitharan (1141128291)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
  */
 
 public class Square{
@@ -30,9 +31,9 @@ public class Square{
      * Constructor for the Square class.
      * Sets the position of the squares on the game board.
      * 
-     * @author Faishal
-     * @param x the X coordinate of the square on the game board.
-     * @param y the Y coordinate of the square on the game board.
+     * @author  Faishal
+     * @param   x the X coordinate of the square on the game board.
+     * @param   y the Y coordinate of the square on the game board.
      */
     public Square(int x, int y) {
         players = new ArrayList<Player>();
@@ -44,9 +45,9 @@ public class Square{
      * 4 spawning points exist on the board and located at coordinate
      * (0,0),(0,8),(8,0),(8,8).
      * 
-     * @author Faishal
-     * @return a boolean - true if the square coordinate is at one of the 
-     *         spawning point, else, false.
+     * @author  Faishal
+     * @return  A boolean - true if the square coordinate is at one of the 
+     *          spawning point, else, false.
      */
     public boolean isPlayerSpawn() {
         return ( (position.getX() == 0 || position.getX() == 8) && 
@@ -56,8 +57,8 @@ public class Square{
     /**
      * Gets the special piece that occupying the square.
      * 
-     * @author Faishal
-     * @return the special piece that occupying the square.
+     * @author  Faishal
+     * @return  The special piece that is occupying the square.
      */
     public SpecialPiece getSpecialPiece() {
         return specialPiece;
@@ -67,9 +68,9 @@ public class Square{
      * Sets the special piece that is going to occupy the square.
      * Special pieces are keys and chest.
      * 
-     * @author Faishal
-     * @param specialPiece the special piece that is going to occupy the square.
-     * @return a boolean - true for setting the special piece onto the square.
+     * @author  Faishal
+     * @param   specialPiece The special piece that is going to occupy the square.
+     * @return  A boolean - true for setting the special piece onto the square.
      */
     public boolean setSpecialPiece(SpecialPiece specialPiece) {
         this.specialPiece = specialPiece;
@@ -79,8 +80,8 @@ public class Square{
     /**
      * Gets the position of the square in the game board.
      * 
-     * @author Faishal
-     * @return Point of the square's position in the game board.
+     * @author  Faishal
+     * @return  Point of the square's position in the game board.
      */
     public Point getPosition() {
         return position;
@@ -89,10 +90,10 @@ public class Square{
     /**
      * Add a player that is going to occupy the square.
      * 
-     * @author Faishal
-     * @param player the player that is going to occupy the square.
-     * @return a boolean - true for adding the player into players array list and
-     *         it exist in the players array list.
+     * @author  Faishal
+     * @param   player the player that is going to occupy the square.
+     * @return  A boolean - true for adding the player into players array list and
+     *          it exist in the players array list.
      */
     public boolean placePlayer(Player player) {
         players.add(player);
@@ -102,10 +103,10 @@ public class Square{
     /**
      * Remove a player from the square.
      * 
-     * @author Faishal
-     * @param player the player that is going to be removed from the square.
-     * @return a boolean - true if the player is exist and removed from player array list,
-     *         else, false. 
+     * @author  Faishal
+     * @param   player The player that is going to be removed from the square.
+     * @return  A boolean - true if the player is exist and removed from player array list,
+     *          else, false. 
      */
     public boolean removePlayer(Player player) {
         return players.remove(player);
@@ -114,17 +115,17 @@ public class Square{
     /**
      * Get all players that is occupying the square.
      * 
-     * @author Faishal
-     * @return An array list of player.
+     * @author  Faishal
+     * @return  An array list of player.
      */
     public ArrayList<Player> getAllPlayers() {
         return players;
     }
 
     /**
-     * Reset specialPiece value that occupying the square to null.
+     * Resets the specialPiece value that is occupying the square to null.
      * 
-     * @author Faishal  
+     * @author  Faishal  
      */
     public void removeSpecialPiece(){
         specialPiece = null;
@@ -136,7 +137,7 @@ public class Square{
      * If there are no players, the method retrieves the icon of the special piece on the square.
      * 
      * @author  Ramanan
-     * @return  an ImageIcon
+     * @return  An ImageIcon.
      */
     public ImageIcon getTopMostImageIcon() {
         if (!players.isEmpty())

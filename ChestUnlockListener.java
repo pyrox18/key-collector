@@ -1,4 +1,4 @@
-import java.util.concurrent.TimeUnit; // TODO: Remove
+import java.util.concurrent.TimeUnit;
 
 /**
  * A listener that acts when the board's chest is unlocked.
@@ -16,8 +16,8 @@ public class ChestUnlockListener implements CustomListener {
      * Constructor for the ChestUnlockListener class.
      * Sets a reference to the game board view for the class's methods to act on.
      * 
-     * @author Haryz
-     * @param  boardView The game board view.
+     * @author  Haryz
+     * @param   boardView The game board view.
      */
     public ChestUnlockListener(BoardView boardView) {
         this.boardView = boardView;
@@ -31,7 +31,7 @@ public class ChestUnlockListener implements CustomListener {
     @Override
     public void update() {
         try {
-            TimeUnit.MILLISECONDS.sleep(200); // TODO: Remove this workaround
+            TimeUnit.MILLISECONDS.sleep(200);
         } catch (Exception e) {
             System.err.println(e);
         }

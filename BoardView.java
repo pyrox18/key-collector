@@ -18,10 +18,12 @@ public class BoardView extends JPanel {
      * The model instance for the game board.
      */
     private Board board;
+
     /**
      * A 2-dimensional array of square buttons that are present on the board.
      */
     private SquareButton[][] buttons;
+    
     /**
      * A boolean that indicates whether the current game has ended or not.
      */
@@ -31,7 +33,7 @@ public class BoardView extends JPanel {
      * Constructor for the BoardView class.
      * Sets up a 9x9 GridLayout to house the square buttons, and adds those buttons.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public BoardView() {
         super(new GridLayout(9, 9));
@@ -57,10 +59,10 @@ public class BoardView extends JPanel {
     /**
      * Gets a square button on the board.
      * 
-     * @author Haryz
-     * @param  x The x-coordinate of the button.
-     * @param  y The y-coordinate of the button.
-     * @return A square button.
+     * @author  Haryz
+     * @param   x The x-coordinate of the button.
+     * @param   y The y-coordinate of the button.
+     * @return  A square button.
      */
     public SquareButton getSquareButton(int x, int y) {
         return buttons[x][y];
@@ -80,14 +82,15 @@ public class BoardView extends JPanel {
                 for (int j = 0; j < 9; j++) {
                     SquareButton button = buttons[i][j];
                     button.setIcon(button.getSquare().getTopMostImageIcon());
+                    button.setBackground(null);
                     if (validPoints.contains(new Point(i, j))) {
                         button.setBackground(Color.GREEN);
                     }
                     else if (button.getSquare().equals(board.getCurrentPlayer().getSquare())) {
                         button.setBackground(Color.ORANGE);
                     }
-                    else {
-                        button.setBackground(null);
+                    if (i == 4 && j == 4 && !button.getSquare().getSpecialPiece().hasListeners()) {
+                        button.getSquare().getSpecialPiece().addListener(new ChestUnlockListener(this));
                     }
                 }
             }
@@ -102,7 +105,7 @@ public class BoardView extends JPanel {
     /**
      * Repaints the buttons of the board and detaches click listeners when the game ends.
      * 
-     * @author Haryz
+     * @author  Haryz
      */
     public void endOfGame() {
         gameEnded = true;
@@ -111,9 +114,7 @@ public class BoardView extends JPanel {
                 SquareButton button = buttons[i][j];
                 button.setIcon(button.getSquare().getTopMostImageIcon());
                 button.setBackground(Color.GREEN);
-                for (ActionListener al : button.getActionListeners()) {
-                    button.removeActionListener(al);
-                }
+                button.setEnabled(false);
             }
         }
     }
@@ -121,20 +122,22 @@ public class BoardView extends JPanel {
     /**
      * Gets the boolean that indicates if the game has ended.
      * 
-     * @return The gameEnded attribute
+     * @return  The gameEnded attribute
      */
     public boolean isGameEnded() {
         return gameEnded;
     }
 
     /**
-     * Resets the board view to use new square models.
-     * Used when the square models are recreated due to a new game being initiated.
+     * Resets the end-of-game boolean value and reattaches button listeners, then refreshes the board.
+     * 
+     * @author  Haryz
      */
-    public void resetBoardView() {
+    public void newGame() {
+        gameEnded = false;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                buttons[i][j].setSquare(board.getSquare(i, j));
+                buttons[i][j].setEnabled(true);
             }
         }
         refreshBoard();

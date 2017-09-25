@@ -1,7 +1,8 @@
 /**
  * A key piece that can be picked up by players to unlock the chest.
  * 
- * @author      Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Mohamed Haryz Izzudin bin Mohamed Rafy (1141127874)
+ * @author  Ramanan R Muralitharan (1141128291)
  */
 
 public class Key extends SpecialPiece {
@@ -15,10 +16,10 @@ public class Key extends SpecialPiece {
      * Sets the movement strategy related to the key.
      * Also sets the key's initial square and icon path.
      * 
-     * @author Haryz
-     * @param  square The square that the key is initially on.
-     * @param  iconPath The path to the icon for the piece.
-     * @param  strategy The movement strategy related to the key.
+     * @author  Haryz
+     * @param   square The square that the key is initially on.
+     * @param   iconPath The path to the icon for the piece.
+     * @param   strategy The movement strategy related to the key.
      */
     public Key(Square square, String iconPath, MoveStrategy strategy) {
         super(square, iconPath);
@@ -30,9 +31,9 @@ public class Key extends SpecialPiece {
      * Constructs the class based on a string with the same format as the string returned
      * by the toString method.
      * 
-     * @author Haryz
-     * @param  str A string containing the key data.
-     * @throws Error if the string format is not recognised.
+     * @author  Haryz
+     * @param   str A string containing the key data.
+     * @throws  Error if the string format is not recognised.
      */
     public Key(String str) {
         super(new Square(9, 9), str.split("\\|")[2]);
@@ -69,8 +70,8 @@ public class Key extends SpecialPiece {
     /**
      * Gets the strategy attached to the key.
      * 
-     * @author Haryz
-     * @return the strategy
+     * @author  Haryz
+     * @return  The strategy.
      */
     public MoveStrategy getStrategy() {
         return strategy;
@@ -79,9 +80,9 @@ public class Key extends SpecialPiece {
     /**
      * Method for a player to interact with the special piece.
      * 
-     * @author Haryz
-     * @param  player The player that is interacting with the special piece.
-     * @return a boolean - true if the player successfully picks up the key, else false
+     * @author  Haryz
+     * @param   player The player that is interacting with the special piece.
+     * @return  A boolean - true if the player successfully picks up the key, else false
      */
     @Override
     public boolean interact(Player player) {
@@ -92,8 +93,9 @@ public class Key extends SpecialPiece {
      * Gets the key's data in the form of a string.
      * Example: "key|3,4|/icons/monkey.gif|MonkeyStrategy"
      * 
-     * @author Haryz
-     * @return A string containing the key's data.
+     * @author  Haryz
+     * @author  Ramanan
+     * @return  A string containing the key's data.
      */
     @Override
     public String toString() {

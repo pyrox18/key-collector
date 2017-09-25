@@ -33,7 +33,7 @@ public class NewGameClickListener implements ActionListener {
         Scoreboard scoreboard = Scoreboard.getInstance();
         Piece.resetPiecesGenerated();
         board.initializeBoard();
-        boardView.refreshBoard();
+        boardView.newGame();
         scoreboard.refreshScoreboard();
     }
 }
